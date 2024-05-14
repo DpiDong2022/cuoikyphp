@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Route;
 // BEGIN::PUBLIC
 Route::get('/', [PublicHomeController::class, 'Index'])->name("Home.index");
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
+
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
+
 Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 Route::get('/product/luu', [ProductController::class, 'store'])->name("product.store");
 
