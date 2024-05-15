@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\public;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Category;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.categories.index', ['categories' => $this->list(),'roles' => Role::all()]);
     }
 
     /**
@@ -21,13 +21,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('public.product.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Product $product)
+    public function store(Request $request)
     {
         //
     }
@@ -35,16 +35,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Category $category)
     {
-        $products = Product::all();
-        return view('public.product.display', ['products' => $products]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Category $category)
     {
         //
     }
@@ -52,7 +51,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -60,8 +59,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Category $category)
     {
         //
+    }
+
+    public function list()
+    {
+        return Category::all();
     }
 }
