@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Techolic Admin</title>
 
     <!-- Custom fonts for this template-->
 
@@ -36,7 +36,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TECHOLIC <sup>Admin Page</sup></div>
+                <div class="sidebar-brand-text mx-3">TECHOLIC</div>
             </a>
 
             <!-- Divider -->
@@ -61,7 +61,7 @@
                 </a>
                 <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" >Trang chủ</a>
+                        <a class="collapse-item" href="{{route('product.index')}}">Trang chủ</a>
                         <a class="collapse-item" >Form thêm/sửa</a>
                     </div>
                 </div>
