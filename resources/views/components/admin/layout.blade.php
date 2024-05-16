@@ -18,6 +18,11 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css"
+        integrity="sha512-PT0RvABaDhDQugEbpNMwgYBCnGCiTZMh9yOzUsJHDgl/dMhD9yjHAwoumnUk3JydV3QTcIkNDuN40CJxik5+WQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     @vite(['resources/js/admin/layout.js'])
 
@@ -61,13 +66,15 @@
                 </a>
                 <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Trang chủ</h6>
+                        <h6 class="collapse-header">Form thêm/sửa</h6> --}}
                         <a class="collapse-item" >Trang chủ</a>
                         <a class="collapse-item" >Form thêm/sửa</a>
                     </div>
                 </div>
             </li>
-             {{-- END:Product --}}
-             {{-- BEGIn:Category --}}
+             {{-- END:category --}}
+             {{-- BEGIn:product --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorySet"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -78,7 +85,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Trang chủ</h6>
                         <h6 class="collapse-header">Form thêm/sửa</h6> --}}
-                        <a class="collapse-item" href="{{route('category.index')}}">Danh sách</a>
+                        <a class="collapse-item" href="{{ route('category.index') }}">Danh sách</a>
                     </div>
                 </div>
             </li>
@@ -100,7 +107,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Chuc nang:</h6>
-                        <a class="collapse-item" href="">Them</a>
+                        <a class="collapse-item" >Them</a>
                         <a class="collapse-item" href="user.show">Hien thi</a>
                     </div>
                 </div>
@@ -166,7 +173,8 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
@@ -418,7 +426,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    {{$slot}}
+                    {{ $slot }}
                 </div>
                 <!-- /.container-fluid -->
 
@@ -494,6 +502,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js"
+        integrity="sha512-OQlawZneA7zzfI6B1n1tjUuo3C5mtYuAWpQdg+iI9mkDoo7iFzTqnQHf+K5ThOWNJ9AbXL4+ZDwH7ykySPQc+A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     @vite(['resources/js/admin/layout.js'])
 
 </body>
