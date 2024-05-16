@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class Account extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -36,5 +37,4 @@ class Account extends Authenticatable
         return 'username';
     }
 }
-
 
