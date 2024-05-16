@@ -32,6 +32,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
+    Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
 });
 
 // END:ADMIN
