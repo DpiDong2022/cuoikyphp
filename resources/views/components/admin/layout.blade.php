@@ -95,13 +95,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Nguoi dung quan tri</span>
+                    <span>Tài Khoản</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Chuc nang:</h6>
-                        <a class="collapse-item" href="">Them</a>
-                        <a class="collapse-item" href="user.show">Hien thi</a>
+                        <h6 class="collapse-header">Chức năng</h6>
+                        <a class="collapse-item" href="{{route('account.add')}}">Thêm tài khoản</a>
+                        <a class="collapse-item" href="">Danh sách tài khoản</a>
                     </div>
                 </div>
             </li>

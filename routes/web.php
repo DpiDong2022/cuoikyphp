@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\addUserController;
 
 // BEGIN::PUBLIC
 Route::get('/', [PublicHomeController::class, 'Index'])->name("Home.index");
@@ -29,5 +30,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
 });
+
 // END:ADMIN
