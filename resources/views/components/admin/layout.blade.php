@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Techolic Admin</title>
 
     <!-- Custom fonts for this template-->
 
@@ -41,7 +41,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TECHOLIC <sup>Admin Page</sup></div>
+                <div class="sidebar-brand-text mx-3">TECHOLIC</div>
             </a>
 
             <!-- Divider -->
@@ -66,9 +66,9 @@
                 </a>
                 <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Trang chủ</h6>
-                        <h6 class="collapse-header">Form thêm/sửa</h6> --}}
-                        <a class="collapse-item" >Trang chủ</a>
+
+                        <a class="collapse-item" href="{{route('product.index')}}">Trang chủ</a>
+
                         <a class="collapse-item" >Form thêm/sửa</a>
                     </div>
                 </div>
@@ -102,13 +102,15 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Nguoi dung quan tri</span>
+                    <span>Tài Khoản</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Chuc nang:</h6>
-                        <a class="collapse-item" >Them</a>
-                        <a class="collapse-item" href="user.show">Hien thi</a>
+
+                        <h6 class="collapse-header">Chức năng</h6>
+                        <a class="collapse-item" href="{{route('account.add')}}">Thêm tài khoản</a>
+                        <a class="collapse-item" href="">Danh sách tài khoản</a>
+
                     </div>
                 </div>
             </li>
