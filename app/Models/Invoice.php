@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+    protected $table = 'invoices';
     public function user()
     {
         return $this -> belongsTo(User::class, 'user_id');
@@ -44,8 +45,8 @@ class Invoice extends Model
         return $this -> hasMany(InvoiceDetail::class, 'invoice_id');
     }
 
-    public function varients()
-    {
-        return $this -> hasManyThrough(Varient::class, InvoiceDetail::class, 'invoice_id', 'varient_id');
-    }
+    // public function varients()
+    // {
+    //     return $this -> hasManyThrough(Varient::class, InvoiceDetail::class, 'invoice_id', 'varient_id', 'id', 'id');
+    // }
 }

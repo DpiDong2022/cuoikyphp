@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderInformation extends Model
 {
     use HasFactory;
+    protected $table = 'order_information';
 
     public function invoice()
     {

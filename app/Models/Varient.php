@@ -22,6 +22,7 @@ class Varient extends Model
 {
     use HasFactory;
 
+    protected $table = 'varients';
     public function product()
     {
         return $this->belongsTo(Product::class,'product_id');

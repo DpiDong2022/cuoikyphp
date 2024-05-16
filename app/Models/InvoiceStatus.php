@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\OrderDetail
+ * App\Models\IncvoiceStatus
  *
  * @property int $id
  * @property string $name

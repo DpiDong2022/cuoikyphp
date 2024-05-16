@@ -24,7 +24,7 @@
     <h1>Người dùng: {{ $user->name }}</h1>
     <h1>Email: {{ $user->email }}</h1>
     <h1>Địa chỉ đơn hàng: {{ $user->invoices()->first()->total }}</h1>
-    <h1>Trạng thái:{{$user->invoices()->first() -> status()}}</h1>
+    <h1>Trạng thái:{{$user->invoices()->first() -> status() -> get()[0]->name}}</h1>
     <h1>Danh sách sản phẩm:</h1>
 
     {{-- @foreach ($user->invoices()->first()->varients() as $varient)
@@ -33,11 +33,19 @@
         <h3>Số lượng đặt: </h3>
         <h3>Hình ảnh: {{$varient -> image}}</h3>
     @endforeach --}}
-    @foreach ($user->invoices()->first()->varients() as $varient)
-        <h3>Tên sản phẩm: {{ $varient->product()->name }}</h3>
-        <h3>Giá: {{ $varient->price }}</h3>
+    <hr>
+    @foreach ($user->invoices()->first()-> invoiceDetails() ->get() as $detail)
+        <h3>Tên sản phẩm: {{ $detail-> varient() -> get()[0] -> product() -> get()[0]->name}}</h3>
+        <h3>Màu: </h3>
+        <button class="btn" style="background-color: {{ $detail-> varient() -> get()[0] -> color}};"></button>
+        <h3>Ram: {{ $detail-> varient() -> get()[0] -> memory}}</h3>
+        <h3>Bộ nhớ: {{ $detail-> varient() -> get()[0] -> storage}}</h3>
+        <h3>Ảnh:</h3>
+        <img src="{{ $detail-> varient() -> get()[0] -> image}}" alt="">
+        <hr>
+        {{-- <h3>Giá: {{ $varient->price }}</h3>
         <h3>Số lượng đặt: </h3>
-        <h3>Hình ảnh: {{ $varient->image }}</h3>
+        <h3>Hình ảnh: {{ $varient->image }}</h3> --}}
     @endforeach
 
     {{-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
