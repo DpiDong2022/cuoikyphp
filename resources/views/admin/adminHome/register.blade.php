@@ -8,6 +8,11 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account</h1>
                             </div>
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                            @endif
                             <form class="user" method="POST" action="">
                                 @csrf
                                 <div class="form-group">
@@ -23,11 +28,15 @@
                                         placeholder="Repeat Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="roles">Choose a role: </label>
-                                    <select id="roles" name="roles" class="form-control form-control-user">
-                                      <option value="1">Employee</option>
-                                      <option value="2">Manager</option>
-                                    </select>
+                                    <label for="roles">Choose a role:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="role_id" id="roleEmployee" value="1" required>
+                                        <label class="form-check-label" for="roleAdmin">Admin</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="role_id" id="roleManager" value="2" required>
+                                        <label class="form-check-label" for="roleUser">User</label>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Create Account

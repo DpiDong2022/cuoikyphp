@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class addUserController extends Controller
 {
@@ -19,15 +20,21 @@ class addUserController extends Controller
         $request->validate([
             'username' => 'required|string|max:255|unique:accounts',
             'password' => 'required|string|min:8|confirmed',
+            'role_id' => 'required|integer'
         ], [
             'password.confirmed' => 'The password confirmation does not match.',
         ]);
 
-        Account::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
+        $username = $request->input('username');
+        $password = Hash::make($request->input('password'));
+        $role_id = $request->input('role_id');
+
+        DB::table('accounts')->insert([
+            'username' => $username,
+            'password' => $password,
+            'role_id' => $role_id,
         ]);
 
-        return back()->with('success', 'Your account has been created! You can now log in.');
+        return redirect()->back()->with('success', 'Account created successfully!');
     }
 }
