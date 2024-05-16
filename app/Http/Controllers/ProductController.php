@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.index', ['products' => $this->list()]);
     }
 
     /**
@@ -60,6 +60,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        
+    }
+
+    public function list(){
+        return Product::all();
     }
 }
