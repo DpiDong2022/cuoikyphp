@@ -526,11 +526,4 @@
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
-
-   
-
-
-<!-- molla/checkout.html  22 Nov 2019 09:55:06 GMT -->
-
-
 </x-public.layout>
