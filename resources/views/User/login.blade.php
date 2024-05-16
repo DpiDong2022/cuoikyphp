@@ -16,9 +16,9 @@
             		<div class="form-box">
             			<div class="form-tab">
 	            			<ul class="nav nav-pills nav-fill" role="tablist">
-							    <li class="nav-item">
+							    <!-- <li class="nav-item">
 							        <a class="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</a>
-							    </li>
+							    </li> -->
 							    <li class="nav-item">
 							        <a class="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
 							    </li>
@@ -67,23 +67,29 @@
 								    		</div><!-- End .col-6 -->
 								    	</div><!-- End .row -->
 							    	</div><!-- End .form-choice -->
-							    </div><!-- .End .tab-pane -->
+							    </div>
+                                <!-- .End .tab-pane -->
 							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-							    	<form action="#">
+							    	<form action="#" method = "POST">
+                                        @csrf 
+                                        <div class="form-group">
+							    			<label for="register-email-2">Full Name</label>
+							    			<input type="text" class="form-control" id="register-email-2" name="name" required>
+							    		</div>
+
 							    		<div class="form-group">
 							    			<label for="register-email-2">Your email address *</label>
-							    			<input type="email" class="form-control" id="register-email-2" name="register-email" required>
+							    			<input type="email" class="form-control" id="register-email-2" name="email" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-group">
 							    			<label for="register-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
+							    			<input type="password" class="form-control" id="register-password-2" name="password" required>
 							    		</div>
+
+                                       
                                         
-                                        <div class="form-group">
-							    			<label for="register-password-2">Confirm Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
-							    		</div><!-- End .form-group -->
+                                        <!-- End .form-group -->
 
 							    		<div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">

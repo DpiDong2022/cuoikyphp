@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[AppController::class,'index'])->name('app.index');
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
 Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::post('/login',[LoginController::class,'postRegister']);
+
+
 // Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
 // Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
