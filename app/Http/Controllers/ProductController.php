@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\public;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.index', ['products' => $this->list()]);
     }
 
     /**
@@ -21,13 +20,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('public.product.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Product $product)
+    public function store(Request $request)
     {
         //
     }
@@ -37,8 +36,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $products = Product::all();
-        return view('public.product.display', ['products' => $products]);
+        //
     }
 
     /**
@@ -62,6 +60,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        
+    }
+
+    public function list(){
+        return Product::all();
     }
 }
