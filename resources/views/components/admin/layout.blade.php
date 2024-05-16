@@ -41,7 +41,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">TECHOLIC <sup>Admin Page</sup></div>
             </a>
 
             <!-- Divider -->
@@ -57,31 +57,31 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            {{-- BEGIN:category --}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#gategorySet"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Sản phẩm</span>
-                </a>
-                <div id="gategorySet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Trang chủ</h6>
-                        <h6 class="collapse-header">Form thêm/sửa</h6> --}}
-                        <a class="collapse-item">Trang chủ</a>
-                        <a class="collapse-item">Form thêm/sửa</a>
-                    </div>
-                </div>
-            </li>
-            {{-- END:category --}}
-            {{-- BEGIn:product --}}
+            {{-- BEGIN:Product --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productSet"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Category</span>
+                    <span>Sản phẩm</span>
                 </a>
                 <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Trang chủ</h6>
+                        <h6 class="collapse-header">Form thêm/sửa</h6> --}}
+                        <a class="collapse-item" >Trang chủ</a>
+                        <a class="collapse-item" >Form thêm/sửa</a>
+                    </div>
+                </div>
+            </li>
+             {{-- END:category --}}
+             {{-- BEGIn:product --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorySet"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Category</span>
+                </a>
+                <div id="categorySet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Trang chủ</h6>
                         <h6 class="collapse-header">Form thêm/sửa</h6> --}}
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </li>
-            {{-- END:product --}}
+            {{-- END:Category --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -107,7 +107,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Chuc nang:</h6>
-                        <a class="collapse-item">Them</a>
+                        <a class="collapse-item" >Them</a>
                         <a class="collapse-item" href="user.show">Hien thi</a>
                     </div>
                 </div>
@@ -208,15 +208,6 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
-                    and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
-                    Pro!</a>
             </div>
 
         </ul>
