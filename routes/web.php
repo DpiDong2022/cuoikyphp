@@ -22,7 +22,4 @@ Route::get('/category', [CategoryController::class, 'Index'])->name("category.in
 
 // BEGIN::ADMIN
 Route::get('/admin', [AdminHomeController::class, 'Index'])->name("Admin.index");
-// Route::prefix('admin')->group(function () {
-//     Route::get('/products', [AdminHomeController::class, 'products'])->name('admin.products.index');
-// });
 // END:ADMIN

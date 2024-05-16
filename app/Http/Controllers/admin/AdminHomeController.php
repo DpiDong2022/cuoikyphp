@@ -11,14 +11,4 @@ class AdminHomeController extends Controller
     {
         return view("admin.adminHome.index");
     }
-
-    // public function product()
-    // {
-    //     // Fetch all products
-    //     // $products = Product::all();
-
-    //     // Pass the products to the view
-    //     // compact('products')
-    //     return view('admin.products.index');
-    // }
 }

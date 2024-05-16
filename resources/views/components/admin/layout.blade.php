@@ -52,31 +52,29 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            {{-- BEGIN:category --}}
+            {{-- BEGIN:Product --}}
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#gategorySet"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productSet"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Sản phẩm</span>
                 </a>
-                <div id="gategorySet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Trang chủ</h6>
-                        <h6 class="collapse-header">Form thêm/sửa</h6> --}}
                         <a class="collapse-item" >Trang chủ</a>
                         <a class="collapse-item" >Form thêm/sửa</a>
                     </div>
                 </div>
             </li>
-             {{-- END:category --}}
-             {{-- BEGIn:product --}}
+             {{-- END:Product --}}
+             {{-- BEGIn:Category --}}
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productSet"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorySet"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Category</span>
                 </a>
-                <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="categorySet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Trang chủ</h6>
                         <h6 class="collapse-header">Form thêm/sửa</h6> --}}
@@ -84,7 +82,7 @@
                     </div>
                 </div>
             </li>
-            {{-- END:product --}}
+            {{-- END:Category --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -420,7 +418,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    {{-- {{$slot}} --}}
+                    {{$slot}}
                 </div>
                 <!-- /.container-fluid -->
 
