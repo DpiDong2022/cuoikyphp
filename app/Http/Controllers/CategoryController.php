@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index', ['categories' => $this->list(),'roles' => Role::all()]);
+        return view('admin.categories.index', ['user' =>User::find(1)]);
     }
 
     /**

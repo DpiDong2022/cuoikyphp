@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\role
+ * App\Models\OrderDetail
  *
  * @property int $id
  * @property string $name
  */
 
-class Role extends Model
+class InvoiceStatus extends Model
 {
     use HasFactory;
+    protected $table = 'invoice_status';
 
-    public function users()
+    public function invoices()
     {
-        return $this -> hasMany(User::class,'role_id');
+        return $this -> hasMany(Invoice::class, 'status_id');
     }
 }
