@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\public\CartController;
 use App\Http\Controllers\public\ProductController;
 use App\Http\Controllers\public\PublicHomeController;
@@ -12,9 +13,10 @@ Route::get('/', [PublicHomeController::class, 'Index'])->name("Home.index");
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
 
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
+Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
 
-Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
-Route::get('/product/luu', [ProductController::class, 'store'])->name("product.store");
+// Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
+// Route::get('/product/luu', [ProductController::class, 'store'])->name("product.store");
 
 // END::PUBLIC
 
