@@ -109,7 +109,7 @@
 
                         <h6 class="collapse-header">Chức năng</h6>
                         <a class="collapse-item" href="{{route('account.add')}}">Thêm tài khoản</a>
-                        <a class="collapse-item" href="">Danh sách tài khoản</a>
+                        <a class="collapse-item" href="{{route('account.info')}}">Danh sách tài khoản</a>
 
                     </div>
                 </div>

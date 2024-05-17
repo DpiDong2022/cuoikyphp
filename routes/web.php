@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\addUserController;
+use App\Http\Controllers\admin\credInfoController;
 
 // BEGIN::PUBLIC
 Route::get('/', [PublicHomeController::class, 'Index'])->name("Home.index");
@@ -33,6 +34,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
     Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+
+    Route::get('/account-info', [credInfoController::class, 'showCred'])->name('account.info');
 });
 
 // END:ADMIN

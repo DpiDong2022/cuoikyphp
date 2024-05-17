@@ -17,6 +17,15 @@ class Role extends Model
     use HasFactory;
     protected $table = 'roles';
 
+    protected $fillable = [
+        'name',
+    ];
+
+    public function adminAccounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
     public function users()
     {
         return $this -> hasMany(User::class,'role_id');
