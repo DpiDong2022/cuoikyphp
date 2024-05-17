@@ -13,6 +13,8 @@ use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\addUserController;
 use App\Http\Middleware\EnsureUserLoginAdmin;
 
+
+
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
@@ -20,6 +22,7 @@ Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
 
+Route::get('/product',[ProductController::class,'publicIndex'])->name('public.product.index');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 // Route::get('/product/luu', [ProductController::class, 'store'])->name("product.store");
 
