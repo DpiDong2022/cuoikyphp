@@ -56,7 +56,7 @@
                                 <img width="60" src={{ $product->image }} alt="">
                             </td>
                             <td>
-                                <a class="btn btn-google" href="{{route('product.edit',['id' -> $product->id])}}">Sửa</a>
+                                <a class="btn btn-google" href="{{route('product.edit',['id' => $product->id])}}">Sửa</a>
                             </td>
                         </tr>
                     @endforeach
