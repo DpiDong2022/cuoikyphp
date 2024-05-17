@@ -56,7 +56,7 @@
                                 <img width="60" src={{ $product->image }} alt="">
                             </td>
                             <td>
-                                <a class="btn btn-google" href="{{route('product.edit',$product->id)}}">Sửa</a>
+                                <a class="btn btn-google" href="{{route('product.edit',['id' -> $product->id])}}">Sửa</a>
                             </td>
                         </tr>
                     @endforeach
@@ -66,3 +66,13 @@
     </div>
 </x-admin.layout>
 
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $("#dataTable").DataTable();
+</script>

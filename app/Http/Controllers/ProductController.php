@@ -71,7 +71,7 @@ class ProductController extends Controller
                 $variant->product_id = $product->id;
                 $variant->color = $variantData['color'];
                 $variant->memory = $variantData['memory'];
-                $variant->storage = $variantData['storage'];
+                $variant->storage = str_replace("GB", "", $variantData['storage']);;
                 $variant->quantity = $variantData['quantity'];
                 $variant->minimum_qty = $variantData['minimum_qty'];
 
