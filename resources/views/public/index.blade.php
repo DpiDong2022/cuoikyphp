@@ -7,7 +7,7 @@
                         <div class="col-lg-8">
                             <div class="intro-slider-container slider-container-ratio mb-2 mb-lg-0">
                                 <div class="intro-slider owl-carousel owl-simple owl-dark owl-nav-inside" data-toggle="owl" data-owl-options='{
-                                        "nav": false, 
+                                        "nav": false,
                                         "dots": true,
                                         "responsive": {
                                             "768": {
@@ -72,7 +72,7 @@
                                         </div><!-- End .intro-content -->
                                     </div><!-- End .intro-slide -->
                                 </div><!-- End .intro-slider owl-carousel owl-simple -->
-                                
+
                                 <span class="slider-loader"></span><!-- End .slider-loader -->
                             </div><!-- End .intro-slider-container -->
                         </div><!-- End .col-lg-8 -->
@@ -135,9 +135,9 @@
 
                 <div class="tab-content tab-content-carousel">
                     <div class="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": true,
                                 "margin": 20,
                                 "loop": false,
@@ -350,9 +350,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": true,
                                 "margin": 20,
                                 "loop": false,
@@ -514,9 +514,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": true,
                                 "margin": 20,
                                 "loop": false,
@@ -724,7 +724,7 @@
                                     <div class="cta-heading">
                                         <h3 class="cta-title text-right"><span class="text-primary">New Deals</span> <br>Start Daily at 12pm e.t.</h3><!-- End .cta-title -->
                                     </div><!-- End .cta-heading -->
-                                    
+
                                     <div class="cta-text">
                                         <p>Get <span class="text-dark font-weight-normal">FREE SHIPPING* & 5% rewards</span> on <br>every order with Molla Theme rewards program</p>
                                     </div><!-- End .cta-text -->
@@ -807,7 +807,7 @@
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 -->
-                                    
+
                                     <div class="col-6">
                                         <div class="product product-2">
                                             <figure class="product-media">
@@ -856,9 +856,9 @@
             </div><!-- End .deal-container -->
 
             <div class="container">
-                <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl" 
+                <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl"
                         data-owl-options='{
-                            "nav": false, 
+                            "nav": false,
                             "dots": false,
                             "margin": 30,
                             "loop": false,
@@ -952,9 +952,9 @@
                     <div class="col-xl-4-5col">
                         <div class="tab-content tab-content-carousel just-action-icons-sm">
                             <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel" aria-labelledby="trending-all-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -1192,9 +1192,9 @@
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel" aria-labelledby="trending-tv-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -1398,9 +1398,9 @@
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-computers-tab" role="tabpanel" aria-labelledby="trending-computers-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -1604,9 +1604,9 @@
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-phones-tab" role="tabpanel" aria-labelledby="trending-phones-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -1670,7 +1670,7 @@
                                             </div><!-- End .product-action -->
 
                                             <div class="product-action product-action-dark">
-                                                <a href="#" class="btn-product btn-cart add-to-cart" title="Add to cart" 
+                                                <a href="#" class="btn-product btn-cart add-to-cart" title="Add to cart"
                                                 data-id="1"
                                                 data-title="iPhone 11"
                                                 data-image="assets/images/iPhone/iphone-11.webp"
@@ -1849,9 +1849,9 @@
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-watches-tab" role="tabpanel" aria-labelledby="trending-watches-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -1981,9 +1981,9 @@
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-acc-tab" role="tabpanel" aria-labelledby="trending-acc-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                                     data-owl-options='{
-                                        "nav": true, 
+                                        "nav": true,
                                         "dots": false,
                                         "margin": 20,
                                         "loop": false,
@@ -2216,9 +2216,9 @@
 
                 <div class="tab-content tab-content-carousel just-action-icons-sm">
                     <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -2459,9 +2459,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="top-tv-tab" role="tabpanel" aria-labelledby="top-tv-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -2668,9 +2668,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -2877,9 +2877,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel" aria-labelledby="top-phones-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -3086,9 +3086,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel" aria-labelledby="top-watches-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -3261,9 +3261,9 @@
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="top-acc-tab" role="tabpanel" aria-labelledby="top-acc-link">
-                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                             data-owl-options='{
-                                "nav": true, 
+                                "nav": true,
                                 "dots": false,
                                 "margin": 20,
                                 "loop": false,
@@ -3532,7 +3532,7 @@
                             <div class="col-lg-6">
                                 <div class="cta-wrapper cta-text text-center">
                                     <h3 class="cta-title">Shop Social</h3><!-- End .cta-title -->
-                            
+
                                     <div class="social-icons social-icons-colored justify-content-center">
                                         <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                         <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -3547,7 +3547,7 @@
                                 <div class="cta-wrapper text-center">
                                     <h3 class="cta-title">Get the Latest Deals</h3><!-- End .cta-title -->
                                     <p class="cta-desc">and <br>receive <span class="text-primary">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
-                            
+
                                     <form action="#">
                                         <div class="input-group">
                                             <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
