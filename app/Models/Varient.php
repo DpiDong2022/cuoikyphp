@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
 class Varient extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $table = 'varients';
     public function product()
     {

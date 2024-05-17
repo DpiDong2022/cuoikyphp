@@ -1,4 +1,29 @@
 <x-admin.layout>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            position: relative;
+            overflow:visible;
+            border: 1px solid #ddd;
+            text-align: center;
+            vertical-align: middle;
+        }
+        img {
+            transition: transform 0.3s ease;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        td:hover img {
+            transform: scale(2.5); /* scale up the image on hover */
+            z-index: 100;
+        }
+        /* td img {
+            z-index: 100;
+        } */
+    </style>
     <div class="container">
         <h1 class="h3 mb-4 text-gray-800">Danh sách sản phẩm</h1>
         <div class="table-responsive">
@@ -10,7 +35,9 @@
                         <th scope="col">Giá chung</th>
                         <th scope="col">Giảm giá(%)</th>
                         <th scope="col">Loại sản phẩm</th>
-                        <th scope="col"></th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody style="color: black;">
@@ -24,10 +51,12 @@
                             <td>{{ formatCurrencyVND($product->price) }}</td>
                             <td>{{ $product->discount }}</td>
                             <td>{{ $product->category()->name }}</td>
+                            <td>{{ $product->description }}</td>
                             <td>
-                                <button class="btn btn-facebook">Xem chủng loại</button>
-                                <button class="btn btn-facebook" data-toggle="modal"
-                                    data-target="#editmodal">Sửa</button>
+                                <img width="60" src={{ $product->image }} alt="">
+                            </td>
+                            <td>
+                                <a class="btn btn-google" href="{{route('product.edit',['id' => $product->id])}}">Sửa</a>
                             </td>
                         </tr>
                     @endforeach
@@ -35,65 +64,15 @@
             </table>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" style="color:black;" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="name">Tên sản phẩm</label>
-                            <input type="text" name="name" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Giá chung</label>
-                            <input type="number" name="price" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="discount">Phần trăm giảm giá  <span id="discount">0</span></label>
-                            <input type="range" name="discount" class="form-control" id="rangevalue">
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Chọn hình ảnh</label>
-                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                        <div class="form-group">
-                            <label for="category">Loại sản phẩm</label>
-                            <select name="category" id="" class="form-control">
-                                @foreach ($categories as $item)
-                                    <option value="{{$item -> id}}">{{$item -> name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="desciption">Mô tả</label>
-                            <textarea class="form-control" name="desciption" id="" cols="50" rows="5"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </x-admin.layout>
 
 <!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $("#rangevalue").change(function(){
-            $("#discount").text($(this).val());
-        });
-    });
+    $("#dataTable").DataTable();
 </script>
