@@ -92,7 +92,7 @@ class ProductController extends Controller
 
                 // Upload and store variant image as Base64
                 $variantImageBase64 = base64_encode(file_get_contents($variantData['image']));
-                $variant->image = $variantImageBase64;
+                $variant->image = "data:image/jpeg;base64,".$variantImageBase64;
 
                 $variant->save();
             }
