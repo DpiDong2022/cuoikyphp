@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Custom styles for this template-->
-    
+
 
 </head>
 
@@ -37,29 +37,31 @@
                                     <form class="user" method="POST" action="{{ route('admin.login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" name="username" id="exampleInputUsername" placeholder="Enter Username...">
+                                            <input value="admin" type="text" class="form-control form-control-user" name="username"
+                                                id="exampleInputUsername" placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
+                                            <input value="12345678" type="password" class="form-control form-control-user"
+                                                name="password" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck" name="remember">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                <input type="checkbox" class="custom-control-input" id="customCheck"
+                                                    name="remember">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                         <hr>
+                                        @if (session('message'))
+                                            <div class="alert alert-success">
+                                                {{ session('message') }}
+                                            </div>
+                                        @endif
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="#">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="#">Create an Account!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

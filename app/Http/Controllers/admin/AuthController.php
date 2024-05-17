@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -22,22 +23,25 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $hashedPassword = Hash::make($request->password);
+        // $hashedPassword = Hash::make($request->password);
 
         $credentials = [
             'username' => $request->username,
-            'password' => $hashedPassword,
+            'password' => $request->password,
         ];
 
         if (Auth::guard('account')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
+            $accountId = Auth::guard('account')->user()->id;
+            Auth::login(Auth::guard('account')->user());
+            // Lưu account_id vào session
+            session(['account_id' => $accountId]);
+
             return redirect()->intended(route('Admin.index'));
         }
 
-        throw ValidationException::withMessages([
-            'username' => __('auth.failed'),
-        ]);
+        return redirect()->back()->withErrors(['message' => 'Invalid credentials']);
     }
 
     public function logout(Request $request)
@@ -46,6 +50,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return view('admin.adminHome.login');
     }
 }

@@ -47,7 +47,7 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-    
+
         'account' => [ // Define a new guard for the Account model
             'driver' => 'session',
             'provider' => 'accounts', // Specify the provider for the Account model
