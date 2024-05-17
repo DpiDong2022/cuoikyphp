@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         return view('admin.categories.index', ['user' =>User::find(1)]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */

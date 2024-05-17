@@ -40,38 +40,19 @@
             <div class="header-top">
                 <div class="container">
                     <div class="header-left">
-                        <a href="tel:#"><i class="icon-phone"></i>Call: +0394 862 622</a>
+                        <a href="tel:#"><i class="icon-phone"></i>Call: +0917199868</a>
                     </div><!-- End .header-left -->
 
                     <div class="header-right">
 
                         <ul class="top-menu">
                             <li>
-                                <a href="#">USD</a>
+                               
                                 <ul>
-                                    <li>
-                                        <div class="header-dropdown">
-                                            <a href="#">USD</a>
-                                            <div class="header-menu">
-                                                <ul>
-                                                    <li><a href="#">Eur</a></li>
-                                                    <li><a href="#">Usd</a></li>
-                                                </ul>
-                                            </div><!-- End .header-menu -->
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="header-dropdown">
-                                            <a href="#">English</a>
-                                            <div class="header-menu">
-                                                <ul>
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">Vietnamese</a></li>
-                                                </ul>
-                                            </div><!-- End .header-menu -->
-                                        </div>
-                                    </li>
-                                    <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    
+                                    <li><a href="#signin-modal" data-toggle="modal">Sign in</a></li>
+                                    <li><a href="#signin-modal" data-toggle="modal">Sign up</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -89,7 +70,7 @@
                         </button>
                         
                         <a href="route('public.index')" class="logo">
-                            <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}}}" alt="Techolic Logo" width="170" height="24">
+                            <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}" alt="Techolic Logo" width="170" height="24">
                         </a>
                     </div><!-- End .header-left -->
 
@@ -247,7 +228,7 @@
                                     <a href="index.html" class="sf-with-ul" id="sf-with-ul-home">HOME</a>
                                 </li>
                                 <li>
-                                    <a href="category.html" class="sf-with-ul">SHOP</a>
+                                    <a href="{{ route('public.product.index') }}" class="sf-with-ul">SHOP</a>
 
                                     <div class="megamenu megamenu-md">
                                         <div class="row no-gutters">
@@ -257,34 +238,15 @@
                                                         <div class="col-md-6">
                                                             <div class="menu-title">Smartphones</div><!-- End .menu-title -->
                                                             <ul>
-                                                                <li><a href="productIphone15.html"><span>iPhone 15 Pro Max<span class="tip tip-hot">Hot</span></span></a></li>
-                                                                <li><a href="coming-soon.html"><span>Samsung Galaxy S24 Ultra<span class="tip tip-new">New</span></span></a></li>
-                                                                <li><a href="productSamsungGalaxyFold5.html">Samsung Galaxy Z Fold 5</a></li>
-                                                                <li><a href="category.html">Google Pixel Fold</a></li>
-                                                                <li><a href="category.html">Google Pixel 8 Pro</a></li>
+                                                                @foreach($category as $value ) 
+                                                                <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li>
+                                                                @endforeach 
                                                             </ul>
 
-                                                            <div class="menu-title">Earphones</div><!-- End .menu-title -->
-                                                            <ul>
-                                                                <li><a href="productAirPod.html"><span>Apple Airpod Pro (Gen 2)<span class="tip tip-hot">Hot</span></span></a></li>
-                                                                <li><a href="category.html">Galaxy Buds 2 Pro</a></li>
-                                                            </ul>
+                                                            
                                                         </div><!-- End .col-md-6 -->
 
-                                                        <div class="col-md-6">
-                                                            <div class="menu-title">Smartwatches</div><!-- End .menu-title -->
-                                                            <ul>
-                                                                <li><a href="category.html">Apple Watch Series 9</a></li>
-                                                                <li><a href="category.html"><span>Galaxy Watch Active 2<span class="tip tip-new">New</span></span></a></li>
-                                                            </ul>
-                                                            <div class="menu-title">Shop Pages</div><!-- End .menu-title -->
-                                                            <ul>
-                                                                <li><a href="cart.html">Cart</a></li>
-                                                                <li><a href="checkout.html">Checkout</a></li>
-                                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                                <li><a href="dashboard.html">My Account</a></li>
-                                                            </ul>
-                                                        </div><!-- End .col-md-6 -->
+                                                    
                                                     </div><!-- End .row -->
                                                 </div><!-- End .menu-col -->
                                             </div><!-- End .col-md-8 -->
@@ -303,72 +265,7 @@
                                         </div><!-- End .row -->
                                     </div><!-- End .megamenu megamenu-md -->
                                 </li>
-                                <li>
-                                    <a href="category.html" class="sf-with-ul">POPULAR</a>
-                                    <div class="megamenu megamenu-sm">
-                                        <div class="row no-gutters">
-                                            <div class="col-md-6">
-                                                <div class="menu-col">
-                                                    <div class="menu-title">Products</div><!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="productIphone15.html">iPhone 15 Pro Max</a></li>
-                                                        <li><a href="#">iPhone 11</a></li>
-                                                        <li><a href="coming-soon.html"><span>Samsung Galaxy S24 Ultra<span class="tip tip-new">New</span></span></a></li>
-                                                        <li><a href="#">Pixel 7a</a></li>
-                                                        <li><a href="#">Asus Zenfones 11</a></li>
-                                                        <li><a href="#">Macbook Pro M3</a></li>
-                                                        <li><a href="#">Asus Zephyrus M16 2024</a></li>
-                                                    </ul>
-                                                </div><!-- End .menu-col -->
-                                            </div><!-- End .col-md-6 -->
-
-                                            <div class="col-md-6">
-                                                <div class="banner banner-overlay">
-                                                    <a href="category.html">
-                                                        <img src="assets/images/menu/banner-2.jpg" alt="Banner">
-
-                                                        <div class="banner-content banner-content-bottom">
-                                                            <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
-                                                        </div><!-- End .banner-content -->
-                                                    </a>
-                                                </div><!-- End .banner -->
-                                            </div><!-- End .col-md-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .megamenu megamenu-sm -->
-                                </li>
-                                <li>
-                                    <a href="#" class="sf-with-ul">ACCESSORIES</a>
-
-                                    <div class="megamenu megamenu-sm">
-                                        <div class="row no-gutters">
-                                            <div class="col-md-6">
-                                                <div class="menu-col">
-                                                    <div class="menu-title">Product Details</div><!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="productAirPod.html">Earphones</a></li>
-                                                        <li><a href="#">Consoles</a></li>
-                                                        <li><a href="#"><span>Headphones<span class="tip tip-new">New</span></span></a></li>
-                                                        <li><a href="#">Cases</a></li>
-                                                        <li><a href="#">Screen Protector</a></li>
-                                                        <li><a href="#">Other Accessories</a></li>
-                                                    </ul>
-                                                </div><!-- End .menu-col -->
-                                            </div><!-- End .col-md-6 -->
-
-                                            <div class="col-md-6">
-                                                <div class="banner banner-overlay">
-                                                    <a href="category.html">
-                                                        <img src="assets/images/menu/banner-2.jpg" alt="Banner">
-
-                                                        <div class="banner-content banner-content-bottom">
-                                                            <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
-                                                        </div><!-- End .banner-content -->
-                                                    </a>
-                                                </div><!-- End .banner -->
-                                            </div><!-- End .col-md-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .megamenu megamenu-sm -->
-                                </li>
+                                
                                 <li>
                                     <a href="#" class="sf-with-ul">PAGES</a>
 
@@ -451,6 +348,7 @@
 
 	            				<ul class="widget-list">
 	            					<li><a href="login.html">Sign In</a></li>
+                                    <li><a href="login.html">Sign Up</a></li>
 	            					<li><a href="cart.html">View Cart</a></li>
 	            					<li><a href="wishlist.html">My Wishlist</a></li>
 	            					<li><a href="#">Track My Order</a></li>
