@@ -239,7 +239,11 @@
                                                             <div class="menu-title">Smartphones</div><!-- End .menu-title -->
                                                             <ul>
                                                                 @foreach($category as $value ) 
-                                                                <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li>
+                                                                {{-- <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
+                                                                {{-- <li><a href="{{ route('category',['slug'=>$value->slug]) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
+                                                                
+                                                                <li><a href="#">{{ $value-> name }}</a></li>
+                                                                
                                                                 @endforeach 
                                                             </ul>
 

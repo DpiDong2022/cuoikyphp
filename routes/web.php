@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\public\CartController;
 use App\Http\Controllers\public\PublicHomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::get('/category', [CategoryController::class, 'Index'])->name("category.in
 Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("category");
 
 Route::get('/product',[ProductController::class,'publicIndex'])->name('public.product.index');
+Route::get('/product-detail/{id}',[ProductDetailController::class,'product-detail'])->name('product-detail');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
