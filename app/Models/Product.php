@@ -20,8 +20,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'products';
-    // protected $fillable = ['id', 'name', 'category_id','price','image','description','discount'];
+    protected $fillable = ['id', 'name', 'category_id','price','image','description','discount'];
 
     public function reviews()
     {
@@ -30,7 +31,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class,'category_id')->first();
     }
 
     public function varients()
