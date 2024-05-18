@@ -15,6 +15,9 @@ use App\Http\Controllers\admin\addUserController;
 use App\Http\Controllers\admin\credInfoController;
 use App\Http\Middleware\EnsureUserLoginAdmin;
 
+use App\Http\Controllers\admin\orderController;
+use App\Http\Controllers\admin\orderDetailsController;
+
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
@@ -40,11 +43,17 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::post('/product/store', [ProductController :: class,'store'])->name('product.store');
 
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
+        Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
         Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
-        Route::get('/account-info', [credInfoController::class, 'showCred'])->name('account.info');
-    });
 
-    Route::get('/account-info', [credInfoController::class, 'showCred'])->name('account.info');
+        Route::get('/order', [orderController::class, 'showInvoice'])->name('order.info');
+        Route::get('/order/{order}', [orderDetailsController::class, 'show'])->name('order.detail');
+        Route::patch('orders/{order}/status', [orderDetailsController::class, 'updateStatus'])->name('order.updateStatus');
+    });
 });
+Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login');
+Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // END:ADMIN
