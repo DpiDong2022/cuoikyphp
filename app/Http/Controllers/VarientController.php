@@ -98,6 +98,7 @@ class VarientController extends Controller
             $variant = new Varient();
             $variant->product_id = $request->product_id;
             $variant->color = $request->color;
+            $variant->price = $request->price;
             $variant->memory = $request->memory;
             $variant->storage = $request->storage;
             $variant->quantity = $request->quantity;
