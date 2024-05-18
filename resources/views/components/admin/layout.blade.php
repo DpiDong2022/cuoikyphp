@@ -22,6 +22,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css"
         integrity="sha512-PT0RvABaDhDQugEbpNMwgYBCnGCiTZMh9yOzUsJHDgl/dMhD9yjHAwoumnUk3JydV3QTcIkNDuN40CJxik5+WQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha512-PT0RvABaDhDQugEbpNMwgYBCnGCiTZMh9yOzUsJHDgl/dMhD9yjHAwoumnUk3JydV3QTcIkNDuN40CJxik5+WQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     @vite(['resources/js/admin/layout.js'])
@@ -41,7 +45,10 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TECHOLIC</div>
+                <div class="sidebar-brand-text mx-3">TECHOLIC @if (session('account_id'))
+                        {{ session('account_id') }}
+                    @endif
+                </div>
             </a>
 
             <!-- Divider -->
@@ -67,14 +74,14 @@
                 <div id="productSet" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a class="collapse-item" href="{{route('product.index')}}">Trang chủ</a>
-
-                        <a class="collapse-item" >Form thêm/sửa</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Trang chủ</a>
+                        <a class="collapse-item" href="{{ route('product.create') }}">Thêm sản phẩm</a>
+                        <a class="collapse-item">Sửa sản phẩm</a>
                     </div>
                 </div>
             </li>
-             {{-- END:category --}}
-             {{-- BEGIn:product --}}
+            {{-- END:category --}}
+            {{-- BEGIn:product --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorySet"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -470,7 +477,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
                 </div>
             </div>
         </div>
