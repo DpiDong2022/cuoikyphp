@@ -53,16 +53,17 @@ class ProductController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'price' => 'required|numeric|min:0',
-                'image' => 'required|image|mimes:webp, jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed
+                'image' => 'required|image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed
                 'description' => 'nullable|string',
                 'discount' => 'nullable|numeric|min:0|max:100',
                 'category_id' => 'required|exists:categories,id',
                 'variants.*.color' => 'required',
                 'variants.*.memory' => 'required',
                 'variants.*.storage' => 'required',
-                'variants.*.image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'variants.*.image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
                 'variants.*.quantity' => 'required|numeric',
                 'variants.*.minimum_qty' => 'required|numeric',
+                'variants.*.price' => 'required|numeric|min:0',
             ]);
 
             // Handle product creation
@@ -87,7 +88,8 @@ class ProductController extends Controller
                 $variant->product_id = $product->id;
                 $variant->color = $variantData['color'];
                 $variant->memory = $variantData['memory'];
-                $variant->storage = str_replace("GB", "", $variantData['storage']);;
+                $variant->price = $variantData['price'];
+                $variant->storage = $variantData['storage'];
                 $variant->quantity = $variantData['quantity'];
                 $variant->minimum_qty = $variantData['minimum_qty'];
 

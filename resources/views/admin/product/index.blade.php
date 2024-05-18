@@ -28,8 +28,23 @@
         /* td img {
             z-index: 100;
         } */
+        .description-content {
+            position: relative;
+        }
+
+        .read-more,
+        .read-less {
+            color: blue;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .d-none {
+            display: none;
+        }
     </style>
-    <div class="card" style="height:85vh">
+    <div class="card">
         <div class="container">
             <h1 class="h3 mb-4 text-gray-800">Danh sách sản phẩm</h1>
             <div class="table-responsive">
@@ -57,16 +72,35 @@
                                 <td>{{ formatCurrencyVND($product->price) }}</td>
                                 <td>{{ $product->discount }}</td>
                                 <td>{{ $product->category()->name }}</td>
-                                <td>{{ $product->description }}</td>
+                                <td>
+                                    <div class="description-content">
+                                        <span
+                                            class="short-description">{{ Str::limit($product->description, 100) }}</span>
+                                        <span class="full-description d-none">{{ $product->description }}</span>
+                                        @if (Str::length($product->description) > 100)
+                                            <a href="javascript:void(0)" class="read-more">Read More</a>
+                                            <a href="javascript:void(0)" class="read-less d-none">Read Less</a>
+                                        @endif
+                                    </div>
+                                </td>
                                 <td>
                                     <img width="60" src={{ $product->image }} alt="">
                                 </td>
                                 <td>
-                                    <a class="btn btn-google" href="{{ route('product.edit', $product->id) }}">Sửa thông
-                                        tin</a>
-                                    <a class="btn btn-facebook" href="{{ route('varient.index', $product->id) }}">Danh
-                                        sách biến thể</a>
-
+                                    <a href="{{ route('product.edit', $product->id) }}"
+                                        class="btn btn-secondary btn-icon-split btn-google">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                        <span class="text">Sửa thông tin</span>
+                                    </a>
+                                    <a href="{{ route('varient.index', $product->id) }}"
+                                        class="btn btn-secondary btn-icon-split btn-facebook">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                        <span class="text">Danh sách biến thể</span>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -75,52 +109,6 @@
             </div>
         </div>
     </div>
-
-    {{-- begin::modal edit variant --}}
-    <div class="modal fade" id="editVariantModal" tabindex="-1" role="dialog" aria-labelledby="editVariantModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editVariantModalLabel">Edit Variant</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="editVariantForm" action="" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" id="variantId" name="variant_id">
-
-                        <div class="form-group">
-                            <label for="color">Color</label>
-                            <input type="color" class="form-control" id="color" name="color" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="memory">Memory (GB)</label>
-                            <input type="number" class="form-control" id="memory" name="memory" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="storage">Storage (GB)</label>
-                            <input type="text" class="form-control" id="storage" name="storage" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="quantity">Quantity</label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="minimum_qty">Minimum Quantity</label>
-                            <input type="number" class="form-control" id="minimum_qty" name="minimum_qty" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- end::modal edit variant --}}
 </x-admin.layout>
 
 <!-- Include jQuery -->
@@ -132,4 +120,26 @@
 
 <script>
     $("#dataTable").DataTable();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.read-more').forEach(function(element) {
+            element.addEventListener('click', function() {
+                var parent = this.closest('.description-content');
+                parent.querySelector('.short-description').classList.add('d-none');
+                parent.querySelector('.full-description').classList.remove('d-none');
+                parent.querySelector('.read-more').classList.add('d-none');
+                parent.querySelector('.read-less').classList.remove('d-none');
+            });
+        });
+
+        document.querySelectorAll('.read-less').forEach(function(element) {
+            element.addEventListener('click', function() {
+                var parent = this.closest('.description-content');
+                parent.querySelector('.short-description').classList.remove('d-none');
+                parent.querySelector('.full-description').classList.add('d-none');
+                parent.querySelector('.read-more').classList.remove('d-none');
+                parent.querySelector('.read-less').classList.add('d-none');
+            });
+        });
+    });
 </script>

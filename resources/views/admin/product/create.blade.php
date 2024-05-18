@@ -75,6 +75,7 @@
                             <th>Image</th>
                             <th>Quantity</th>
                             <th>Minimum Quantity</th>
+                            <th>Price</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -93,17 +94,23 @@
                             </td>
                             <td>
                                 <select class="form-control" name="variants[0][storage]" required>
-                                    <option value="125GB">125GB</option>
-                                    <option value="256GB">256GB</option>
-                                    <option value="500GB">500GB</option>
-                                    <option value="512GB">512GB</option>
+                                    <option value="4 GB">4 GB</option>
+                                    <option value="8 GB">8 GB</option>
+                                    <option value="16 GB">16 GB</option>
+                                    <option value="32 GB">32 GB</option>
+                                    <option value="128 GB">128 GB</option>
+                                    <option value="256 GB">256 GB</option>
+                                    <option value="512 GB">512 GB</option>
+                                    <option value="1 T">1 T</option>
+                                    <option value="2 T">2 T</option>
+                                    <option value="4 T">4 T</option>
                                     <!-- Add more options as needed -->
                                 </select>
                             </td>
                             <td>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="variants[0][image]"
-                                        onchange="previewImage(this, 0);" required>
+                                        onchange="previewImage(this, 0);" required accept="image/*">
                                     <label class="custom-file-label" for="image">Choose file</label>
                                 </div>
                                 <img id="variantImagePreview_0" src="#" alt="Variant Image Preview"
@@ -114,6 +121,9 @@
                             </td>
                             <td>
                                 <input type="number" class="form-control" name="variants[0][minimum_qty]" required>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="variants[0][price]" required>
                             </td>
                             <td>
                                 <a class="btn btn-danger btn-icon-split text-white remove-variant">
@@ -177,16 +187,22 @@
             </td>
             <td>
                 <select class="form-control" name="variants[${variantCount}][storage]" required>
-                    <option value="125GB">125GB</option>
-                    <option value="256GB">256GB</option>
-                    <option value="500GB">500GB</option>
-                    <option value="512GB">512GB</option>
+                    <option value="4 GB">4 GB</option>
+                                <option value="8 GB">8 GB</option>
+                                <option value="16 GB">16 GB</option>
+                                <option value="32 GB">32 GB</option>
+                                <option value="128 GB">128 GB</option>
+                                <option value="256 GB">256 GB</option>
+                                <option value="512 GB">512 GB</option>
+                                <option value="1 T">1 T</option>
+                                <option value="2 T">2 T</option>
+                                <option value="4 T">4 T</option>
                     <!-- Add more options as needed -->
                 </select>
             </td>
             <td>
                 <div class="custom-file">
-                <input type="file" class="custom-file-input" name="variants[${variantCount}][image]" onchange="previewImage(this, ${variantCount});" required>
+                <input type="file" class="custom-file-input" name="variants[${variantCount}][image]" onchange="previewImage(this, ${variantCount});" required accept="image/*">
                 <label class="custom-file-label" for="image">Choose file</label>
                 </div>
                 <img id="variantImagePreview_${variantCount}" src="#" alt="Variant Image Preview" style="max-width: 200px; display: none;">
@@ -197,6 +213,8 @@
             <td>
                 <input type="number" class="form-control" name="variants[${variantCount}][minimum_qty]" required>
             </td>
+            <td>
+                <input type="number" class="form-control" name="variants[${variantCount}][price]" required>
             <td>
                 <a class="btn btn-danger btn-icon-split text-white remove-variant">
                     <span class="icon text-white-50">

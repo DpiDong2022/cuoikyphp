@@ -45,7 +45,8 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
 
         Route::get('products/{id}/variants', [VarientController::class, 'index'])->name('varient.index');
         Route::get('varients/{varient}/edit', [VarientController::class, 'edit'])->name('varient.edit');
-        Route::put('varients/{varient}', [VarientController::class, 'update'])->name('varients.update');
+        Route::put('varient/update/{id}', [VarientController::class, 'update'])->name('varient.update');
+        Route::post('varient/store', [VarientController::class, 'store'])->name('varient.store');
 
 
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');

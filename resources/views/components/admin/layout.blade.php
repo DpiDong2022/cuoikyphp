@@ -76,7 +76,6 @@
 
                         <a class="collapse-item" href="{{ route('product.index') }}">Trang chủ</a>
                         <a class="collapse-item" href="{{ route('product.create') }}">Thêm sản phẩm</a>
-                        <a class="collapse-item">Sửa sản phẩm</a>
                     </div>
                 </div>
             </li>
