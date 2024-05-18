@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,5 +69,11 @@ class CategoryController extends Controller
     public function list()
     {
         return Category::all();
+    }
+    public function category($slug){
+        $category = Category::where('slug',$slug)->first();
+        $product = Product::where('category_id',$category -> id)-> get();
+
+        return view('public.category.index',compact('product'));
     }
 }
