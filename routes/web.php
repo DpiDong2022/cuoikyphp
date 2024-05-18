@@ -21,9 +21,13 @@ use App\Http\Controllers\admin\orderDetailsController;
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
+Route::get( "/login", [PublicHomeController::class,"login"])->name("publicLogin");
+Route::get( "/register", [PublicHomeController::class,"register"])->name("publicRegister");
+Route::post( "/register", [PublicHomeController::class,"postRegister"]);
 
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
+Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("category");
 
 Route::get('/product',[ProductController::class,'publicIndex'])->name('public.product.index');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
