@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\addUserController;
+
 use App\Http\Controllers\admin\credInfoController;
+use App\Http\Middleware\EnsureUserLoginAdmin;
 
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
@@ -37,8 +39,10 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
         Route::post('/product/store', [ProductController :: class,'store'])->name('product.store');
 
-    Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
-    Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
+        Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        Route::get('/account-info', [credInfoController::class, 'showCred'])->name('account.info');
+    });
 
     Route::get('/account-info', [credInfoController::class, 'showCred'])->name('account.info');
 });
