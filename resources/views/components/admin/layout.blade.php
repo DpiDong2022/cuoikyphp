@@ -64,6 +64,27 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Heading -->
+
+            <div class="sidebar-heading">
+                Orders
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('order.info')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Đơn Hàng</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+
+            <div class="sidebar-heading">
+                Product
+            </div>
+
             {{-- BEGIN:Product --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productSet"
@@ -79,8 +100,8 @@
                     </div>
                 </div>
             </li>
-            {{-- END:category --}}
-            {{-- BEGIn:product --}}
+            {{-- END:Product --}}
+            {{-- BEGIn:Category --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categorySet"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -114,8 +135,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
 
                         <h6 class="collapse-header">Chức năng</h6>
-                        <a class="collapse-item" href="{{ route('account.add') }}">Thêm tài khoản</a>
-                        <a class="collapse-item" href="">Danh sách tài khoản</a>
+
+                        <a class="collapse-item" href="{{route('account.add')}}">Thêm tài khoản</a>
+                        <a class="collapse-item" href="{{route('account.info')}}">Danh sách tài khoản</a>
+
 
                     </div>
                 </div>

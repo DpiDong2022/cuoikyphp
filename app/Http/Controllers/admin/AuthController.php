@@ -35,7 +35,7 @@ class AuthController extends Controller
 
             $accountId = Auth::guard('account')->user()->id;
             Auth::login(Auth::guard('account')->user());
-            // Lưu account_id vào session
+
             session(['account_id' => $accountId]);
 
             return redirect()->intended(route('Admin.index'));
