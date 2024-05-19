@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $image
  * @property int $quantity
  * @property string $color
+ * @property string $price
  */
 
 class Varient extends Model

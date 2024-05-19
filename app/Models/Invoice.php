@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
     protected $table = 'invoices';
     public function user()
     {
@@ -44,6 +46,8 @@ class Invoice extends Model
     {
         return $this -> hasMany(InvoiceDetail::class, 'invoice_id');
     }
+
+    
 
     // public function varients()
     // {
