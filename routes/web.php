@@ -20,6 +20,7 @@ use App\Http\Middleware\EnsureUserLoginAdmin;
 use App\Http\Controllers\admin\orderController;
 use App\Http\Controllers\admin\orderDetailsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\public\ResetPasswordController;
 
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
@@ -45,6 +46,13 @@ Route::post('/sendTokenToEmail', [PublicHomeController::class, 'sendTokenToEmail
 Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name('email.verify');
 Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
 Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
+
+Route::get('/reset/enterEmail', [ResetPasswordController::class, 'emailForm'])->name('email.enterEmail');
+Route::get('/reset/enterToken', [ResetPasswordController::class, 'tokenForm'])->name('email.enterToken');
+Route::get('/reset/enterPassword', [ResetPasswordController::class, 'passwordForm'])->name('email.enterPassword');
+Route::post('/reset/senToken', [ResetPasswordController::class, 'sendToken'])->name('reset.sendToken');
+Route::post('/reset/verifyEmail', [ResetPasswordController::class, 'verifyEmail'])->name('reset.verifyEmail');
+Route::post('/reset/savePassword', [ResetPasswordController::class, 'savePassword'])->name('reset.savePassword');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
