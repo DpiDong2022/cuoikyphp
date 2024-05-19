@@ -34,28 +34,53 @@
                                         <div class="alert alert-danger">{{ $item }}</div>
                                     @endforeach
                                 @endif
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                @if (session('success'))
+                                    <div class="alert alert-success">Tạo tài khoản thành công</div>
+                                @endif
                                 <div class="tab-content">
 
                                     <div class="tab-pane fade show active" id="register-2" role="tabpanel"
                                         aria-labelledby="register-tab-2">
-                                        <form action="{{ route('email.sendToken') }}" method = "POST">
+                                        <form action="{{ route('email.storeUser') }}" method = "POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="register-email-2">Your email address *</label>
-                                                <input type="email" class="form-control" id="register-email-2"
-                                                    name="email" value ="phungdaidong1114@gmail.com" required>
+                                                <label for="register-email-2">Nhập tên tài khoản *</label>
+                                                <input type="text" class="form-control" id="register-email-2"
+                                                    name="name" required>
+                                            </div><!-- End .form-group -->
+                                            <div class="form-group">
+                                                <label for="register-email-2">Nhập mật khẩu mới của bạn *</label>
+                                                <input type="password" class="form-control" id="register-email-2"
+                                                    name="password" value ="" required>
+                                            </div><!-- End .form-group -->
+                                            <div class="form-group">
+                                                <label for="register-email-2">Nhập lại *</label>
+                                                <input type="password" class="form-control" id="register-email-2"
+                                                    name="password_confirmation" id="password_confirmation" required>
                                             </div><!-- End .form-group -->
 
-                                            {{-- <div class="form-group">
-							    			<label for="register-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="password" required>
-							    		</div><!-- End .form-group --> --}}
-
                                             <div class="form-footer">
-                                                <button type="submit" class="btn btn-outline-primary-2">
-                                                    <span>CONTINUE</span>
-                                                    <i class="icon-long-arrow-right"></i>
-                                                </button>
+                                                @if (session('success'))
+                                                    <a type="submit" class="btn btn-outline-primary-2"
+                                                        href="{{ route('publicLogin') }}">
+                                                        <span>LOGIN</span>
+                                                        <i class="icon-long-arrow-right"></i>
+                                                    </a>
+                                                @else
+                                                    <button type="submit" class="btn btn-outline-primary-2">
+                                                        <span>CONTINUE</span>
+                                                        <i class="icon-long-arrow-right"></i>
+                                                    </button>
+                                                @endif
 
                                                 {{-- <div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="register-policy-2" required>
@@ -63,6 +88,7 @@
 											</div><!-- End .custom-checkbox --> --}}
                                             </div><!-- End .form-footer -->
                                         </form>
+
                                     </div><!-- .End .tab-pane -->
                                 </div><!-- End .tab-content -->
                             </div><!-- End .form-tab -->
