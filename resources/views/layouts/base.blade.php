@@ -47,12 +47,12 @@
 
                         <ul class="top-menu">
                             <li>
-                               
+
                                 <ul>
-                                    
+
                                     <li><a href="{{ route('publicLogin') }}">Sign in</a></li>
                                     <li><a href="{{ route('publicRegister') }}">Sign up</a></li>
-                                    
+
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -68,7 +68,7 @@
                             <span class="sr-only">Toggle mobile menu</span>
                             <i class="icon-bars"></i>
                         </button>
-                        
+
                         <a href="route('public.index')" class="logo">
                             <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}" alt="Techolic Logo" width="170" height="24">
                         </a>
@@ -197,9 +197,9 @@
                 <div class="container">
                     <div class="header-left">
                         <div class="dropdown category-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+                            {{-- <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                                 Browse Categories <i class="icon-angle-down"></i>
-                            </a>
+                            </a> --}}
 
                             <div class="dropdown-menu">
                                 <nav class="side-nav">
@@ -238,15 +238,15 @@
                                                         <div class="col-md-6">
                                                             <div class="menu-title">Smartphones</div><!-- End .menu-title -->
                                                             <ul>
-                                                                @foreach($category as $value ) 
+                                                                @foreach($category as $value )
                                                                 <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li>
-                                                                @endforeach 
+                                                                @endforeach
                                                             </ul>
 
-                                                            
+
                                                         </div><!-- End .col-md-6 -->
 
-                                                    
+
                                                     </div><!-- End .row -->
                                                 </div><!-- End .menu-col -->
                                             </div><!-- End .col-md-8 -->
@@ -265,7 +265,7 @@
                                         </div><!-- End .row -->
                                     </div><!-- End .megamenu megamenu-md -->
                                 </li>
-                                
+
                                 <li>
                                     <a href="#" class="sf-with-ul">PAGES</a>
 
@@ -308,7 +308,7 @@
 	            				<div class="widget-call">
                                     <i class="icon-phone"></i>
                                     Got Question? Call us 24/7
-                                    <a href="tel:#">+08494 862 622</a>         
+                                    <a href="tel:#">+08494 862 622</a>
                                 </div><!-- End .widget-call -->
 	            			</div><!-- End .widget about-widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
@@ -378,7 +378,7 @@
     <div class="mobile-menu-container">
         <div class="mobile-menu-wrapper">
             <span class="mobile-menu-close"><i class="icon-close"></i></span>
-            
+
             <form action="#" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
                 <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
@@ -401,7 +401,7 @@
                             <li class="active">
                                 <a href="index.html">Home</a>
 
-                                
+
                             </li>
                             <li>
                                 <a href="category.html">Shop</a>
@@ -479,9 +479,9 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-    
 
-    
+
+
     <!-- Plugins JS File -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
