@@ -25,8 +25,10 @@ use App\Http\Controllers\PostController;
 Route::get('/', [AppController::class, 'index'])->name('public.index');
 Route::get('/home', [PublicHomeController::class, 'Index'])->name("Home.index");
 Route::get("/login", [PublicHomeController::class, "login"])->name("publicLogin");
+Route::get("/login/verify", [PublicHomeController::class, "veriryLogin"])->name("publicLogin.verify");
 Route::get("/register", [PublicHomeController::class, "register"])->name("publicRegister");
 Route::post("/register", [PublicHomeController::class, "postRegister"]);
+Route::get("/publicLogout", [PublicHomeController::class, "publicLogout"]) -> name('publicLogout');
 
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
@@ -36,6 +38,13 @@ Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("c
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
+
+
+Route::get('/emailVerify', [PublicHomeController::class, 'indexVerifyEmail'])->name('email.formVerify');
+Route::post('/sendTokenToEmail', [PublicHomeController::class, 'sendTokenToEmail'])->name('email.sendToken');
+Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name('email.verify');
+Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
+Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
@@ -66,15 +75,10 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::patch('orders/{order}/status', [orderDetailsController::class, 'updateStatus'])->name('order.updateStatus');
 
         Route::get('/create-post', [PostController::class, 'create'])->name('post.create');
-        Route::get('/export-template', function () {
-            $path = public_path('assets/them_sanpham_template.xlsx');
-            return response()->file($path);
-        })->name('product.export-template');
-
-        Route::get('/export-templatee', function () {
-            $path = public_path('them_sanpham_template.xlsx');
-            return response()->file($path);
-        })->name('product.export-templatee');
+        // Route::get('/export-template', function () {
+        //     $path = public_path('them_sanpham_template.xlsx');
+        //     return response()->download($path);
+        // })->name('product.export-template');
     });
 });
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');

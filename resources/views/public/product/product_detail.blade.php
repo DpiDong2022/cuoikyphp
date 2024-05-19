@@ -41,8 +41,8 @@
                                     @foreach($varient as $value)
                                     <a class="product-gallery-item active" href="#" data-image="{{ $value->image }}" data-zoom-image="{{ $value->image }}">
                                         <img src="{{ $value->image }}" alt="product side">
-                                    </a>  
-                                    @endforeach                                
+                                    </a>
+                                    @endforeach
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
@@ -64,7 +64,7 @@
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
-                                <p>Dynamic Island dynamically displays alerts and Live Activity, so you don't miss out on information while doing something else. 
+                                <p>Dynamic Island dynamically displays alerts and Live Activity, so you don't miss out on information while doing something else.
                                     <br>You can control your music, see who's calling, check your flight status, and more.</p>
                             </div><!-- End .product-content -->
 
@@ -72,9 +72,9 @@
                                 <label>Color:</label>
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #a8d3eb;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #ebdea8;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                    @foreach($varient as $value)
+                                    <a href="#" class="active" style="background: {$value -> color};"><span class="sr-only">Color name</span></a>
+                                    @endforeach
                                 </div><!-- End .product-nav -->
                             </div><!-- End .details-filter-row -->
 
@@ -83,10 +83,9 @@
                                 <div class="select-custom">
                                     <select name="size" id="size" class="form-control">
                                         <option value="#" selected="selected">64GB</option>
-                                        <option value="s">128GB</option>
-                                        <option value="m">256GB</option>
-                                        <option value="l">512GB</option>
-                                        <option value="xl">1TB</option>
+                                        @foreach($varient as $value)
+                                        <option value="s">{{ $value-> storage }}</option>
+                                        @endforeach
                                     </select>
                                 </div><!-- End .select-custom -->
 
@@ -260,9 +259,9 @@
             </div><!-- End .product-details-tab -->
 
             <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
-            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
-                    "nav": false, 
+                    "nav": false,
                     "dots": true,
                     "margin": 20,
                     "loop": false,
