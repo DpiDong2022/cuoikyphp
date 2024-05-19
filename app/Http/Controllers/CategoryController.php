@@ -71,7 +71,7 @@ class CategoryController extends Controller
         return Category::all();
     }
     public function category($slug){
-        $category = Category::where('name',$slug)->first();
+        $category = Category::where('id',$slug)->first();
         
         $product = Product::where('category_id',$category -> id)-> get();
 

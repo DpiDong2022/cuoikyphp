@@ -10,16 +10,12 @@ class OrderCreated
 {
     use Dispatchable, SerializesModels;
 
-    public $order;
+    public $invoice;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct(Invoice $order)
+    public function __construct(Invoice $invoice)
     {
-        $this->order = $order;
+        $this->invoice = $invoice;
     }
 }
+
 
