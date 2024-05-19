@@ -53,7 +53,7 @@
                         <div class="product">
                             <figure class="product-media">
                                 <span class="product-label label-new">New</span>
-                                <a href="productIphone15.php">
+                                <a href="{{ route('product_detail',['id'=>$value-> id]) }}">
                                     <img src="{{ $value->image }}" alt="Product image" class="product-image">
                                 </a>
 

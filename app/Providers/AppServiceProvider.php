@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view) 
         {
             $view->with([
-                'category'=>Category::orderBy('name','ASC')-> get(),
+                'category'=>Category::orderBy('id','ASC')-> get(),
             ]);
         });
     }

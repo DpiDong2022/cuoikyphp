@@ -25,11 +25,13 @@ class ProductController extends Controller
         // ->join('category','id','=','products.category_id')
         // ->orderby('products.id','desc')->get();
         $product = Product::all();
-        $category = Category::orderBy('name', 'ASC')->get();
-        $all_products = DB::table('products')->orderby('products.id', 'desc')->limit(20)->get();
 
-        //return view('public.product.index', ['products' => Product::all(), 'category' => Category::orderBy('name','ASC')->get()]) ;
-        return view('public.product.index', compact('product', 'category', 'all_products'));
+        
+        $all_products = DB::table('products')->orderby('products.id','desc')->limit(20)->get();
+        
+         return view('public.product.index',compact('product','all_products'));
+
+       
     }
 
 
@@ -168,4 +170,10 @@ class ProductController extends Controller
     {
         return Product::all();
     }
+    public function product_detail($id){
+        $pro = Product::find($id);
+        $varient = Varient::where('id', $pro->id)->get();
+        return view('public.product.product_detail',compact('pro','varient'));
+    }
 }
+
