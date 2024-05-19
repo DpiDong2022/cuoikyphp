@@ -18,6 +18,7 @@ use App\Http\Middleware\EnsureUserLoginAdmin;
 
 use App\Http\Controllers\admin\orderController;
 use App\Http\Controllers\admin\orderDetailsController;
+use App\Http\Controllers\PostController;
 
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
@@ -59,6 +60,8 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::get('/order', [orderController::class, 'showInvoice'])->name('order.info');
         Route::get('/order/{order}', [orderDetailsController::class, 'show'])->name('order.detail');
         Route::patch('orders/{order}/status', [orderDetailsController::class, 'updateStatus'])->name('order.updateStatus');
+
+        Route::get('/create-post', [PostController::class, 'create'])->name('post.create');
     });
 });
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');

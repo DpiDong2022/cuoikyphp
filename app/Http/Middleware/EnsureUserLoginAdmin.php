@@ -16,7 +16,7 @@ class EnsureUserLoginAdmin
     public function handle(Request $request, Closure $next): Response
     {
         // Check if 'user_id' is present in the session
-        if (!$request->session()->has('account_id')) {
+        if (!$request->session()->has('account')) {
             // If 'user_id' is not present, redirect to the login page
             return redirect('/admin/login');
         }
