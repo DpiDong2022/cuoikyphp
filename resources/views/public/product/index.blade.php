@@ -42,7 +42,7 @@
                 </div><!-- End .toolbox-right -->
             </div><!-- End .toolbox -->
 
-            
+
             <div class="products">
                 <div class="row" id="root">
 
@@ -92,7 +92,7 @@
                         </div><!-- End .product -->
                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-        @endforeach             
+        @endforeach
                 </div><!-- End .row -->
 
                 <div class="load-more-container text-center">
@@ -117,9 +117,9 @@
                         <div class="collapse show" id="widget-1">
                             <div class="widget-body">
 
-                                @foreach($category as $value ) 
-                                    
-                                
+                                @foreach($category as $value )
+
+
 
                                 <div class="filter-items filter-items-count">
                                     <div class="filter-item">
@@ -130,7 +130,7 @@
                                         <span class="item-count">{{ $value->products()->count() }}</span>
                                     </div><!-- End .filter-item -->
 
-                                   
+
 
                                 </div><!-- End .filter-items -->
                                 @endforeach
