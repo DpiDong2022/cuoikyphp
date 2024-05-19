@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <a href="{{ route('product.export-template') }}" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
                         <i style="color:white;" class="fa fa-file-excel" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importExcelModal">
                     Import Excel
                 </button>
-            </div>
+            </div> --}}
 
             <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

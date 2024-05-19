@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,27 +10,28 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/icons/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/icons/logo-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/icons/logo-icon.png')}}">
-    <link rel="manifest" href="{{asset('assets/images/icons/site.html')}}">
-    <link rel="mask-icon" href="{{asset('assets/images/icons/safari-pinned-tab.svg')}}" color="#666666">
-    <link rel="shortcut icon" href="{{asset('assets/images/icons/logo-icon.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/logo-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/icons/logo-icon.png') }}">
+    <link rel="manifest" href="{{ asset('assets/images/icons/site.html') }}">
+    <link rel="mask-icon" href="{{ asset('assets/images/icons/safari-pinned-tab.svg') }}" color="#666666">
+    <link rel="shortcut icon" href="{{ asset('assets/images/icons/logo-icon.png') }}">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="{{asset('assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css')}}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css') }}">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/plugins/magnific-popup/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/plugins/jquery.countdown.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery.countdown.css') }}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/skins/skin-demo-3.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/demos/demo-3.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/skins/skin-demo-3.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/demos/demo-3.css') }}">
 
     @stack('styles')
 </head>
@@ -49,9 +51,14 @@
                             <li>
 
                                 <ul>
+                                    @if (session('user'))
+                                        <li>Người dùng: {{ session('user')->name }}</li>
+                                        <li><a href="{{ route('publicLogout') }}">Logout</a></li>
+                                    @else
+                                        <li><a href="{{ route('publicLogin') }}">Sign in</a></li>
+                                        <li><a href="{{ route('publicRegister') }}">Sign up</a></li>
+                                    @endif
 
-                                    <li><a href="{{ route('publicLogin') }}">Sign in</a></li>
-                                    <li><a href="{{ route('publicRegister') }}">Sign up</a></li>
 
                                 </ul>
                             </li>
@@ -70,7 +77,8 @@
                         </button>
 
                         <a href="route('public.index')" class="logo">
-                            <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}" alt="Techolic Logo" width="170" height="24">
+                            <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}" alt="Techolic Logo"
+                                width="170" height="24">
                         </a>
                     </div><!-- End .header-left -->
 
@@ -81,7 +89,8 @@
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <label for="q" class="sr-only">Search</label>
                                     <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                                    <input type="search" class="form-control" name="q" id="q"
+                                        placeholder="Search product ..." required>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -89,7 +98,9 @@
 
                     <div class="header-right">
                         <div class="dropdown compare-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" data-display="static"
+                                title="Compare Products" aria-label="Compare Products">
                                 <div class="icon">
                                     <i class="icon-random"></i>
                                 </div>
@@ -99,18 +110,23 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="compare-products">
                                     <li class="compare-product">
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        <h4 class="compare-product-title"><a href="product.html">iPhone 14 Pro</a></h4>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i
+                                                class="icon-close"></i></a>
+                                        <h4 class="compare-product-title"><a href="product.html">iPhone 14 Pro</a>
+                                        </h4>
                                     </li>
                                     <li class="compare-product">
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        <h4 class="compare-product-title"><a href="productIphone15.html">iPhone 15</a></h4>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i
+                                                class="icon-close"></i></a>
+                                        <h4 class="compare-product-title"><a href="productIphone15.html">iPhone 15</a>
+                                        </h4>
                                     </li>
                                 </ul>
 
                                 <div class="compare-actions">
                                     <a href="#" class="action-link">Clear All</a>
-                                    <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
+                                    <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i
+                                            class="icon-long-arrow-right"></i></a>
                                 </div>
                             </div><!-- End .dropdown-menu -->
                         </div><!-- End .compare-dropdown -->
@@ -126,7 +142,8 @@
                         </div><!-- End .compare-dropdown -->
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div class="icon">
                                     <i class="icon-shopping-cart"></i>
                                     <span class="cart-count">2</span>
@@ -150,10 +167,12 @@
 
                                         <figure class="product-image-container">
                                             <a href="product.html" class="product-image">
-                                                <img src="assets/images/samsung/samsunggalaxyzflipxam4.webp" alt="product">
+                                                <img src="assets/images/samsung/samsunggalaxyzflipxam4.webp"
+                                                    alt="product">
                                             </a>
                                         </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i
+                                                class="icon-close"></i></a>
                                     </div><!-- End .product -->
 
                                     <div class="product">
@@ -170,10 +189,12 @@
 
                                         <figure class="product-image-container">
                                             <a href="product.html" class="product-image">
-                                                <img src="assets/images/samsung/samsung-galaxy-z-flip5-tim-4.webp" alt="product">
+                                                <img src="assets/images/samsung/samsung-galaxy-z-flip5-tim-4.webp"
+                                                    alt="product">
                                             </a>
                                         </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i
+                                                class="icon-close"></i></a>
                                     </div><!-- End .product -->
                                 </div><!-- End .cart-product -->
 
@@ -236,15 +257,17 @@
                                                 <div class="menu-col">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div class="menu-title">Smartphones</div><!-- End .menu-title -->
+                                                            <div class="menu-title">Smartphones</div>
+                                                            <!-- End .menu-title -->
                                                             <ul>
 
-                                                                @foreach($category as $value )
-                                                                {{-- <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
-                                                                <li><a href="{{ route('category',['slug'=>$value->id]) }}"><span>{{ $value->name }}<span ></span></span></a></li>
+                                                                @foreach ($category as $value)
+                                                                    {{-- <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
+                                                                    <li><a
+                                                                            href="{{ route('category', ['slug' => $value->id]) }}"><span>{{ $value->name }}<span></span></span></a>
+                                                                    </li>
 
-                                                                {{-- <li><a href="#">{{ $value-> name }}</a></li> --}}
-
+                                                                    {{-- <li><a href="#">{{ $value-> name }}</a></li> --}}
                                                                 @endforeach
                                                             </ul>
 
@@ -262,7 +285,10 @@
                                                         <img src="assets/images/menu/banner-1.jpg" alt="Banner">
 
                                                         <div class="banner-content banner-content-top">
-                                                            <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
+                                                            <div class="banner-title text-white">Last
+                                                                <br>Chance<br><span><strong>Sale</strong></span>
+                                                            </div>
+                                                            <!-- End .banner-title -->
                                                         </div><!-- End .banner-content -->
                                                     </a>
                                                 </div><!-- End .banner banner-overlay -->
@@ -294,7 +320,8 @@
                     </div><!-- End .header-center -->
 
                     <div class="header-right">
-                        <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+                        <i class="la la-lightbulb-o"></i>
+                        <p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
                     </div>
                 </div><!-- End .container -->
             </div><!-- End .header-bottom -->
@@ -303,56 +330,57 @@
         @yield('content')
 
         <footer class="footer">
-        	<div class="footer-middle">
-	            <div class="container">
-	            	<div class="row">
-	            		<div class="col-sm-6 col-lg-3">
-	            			<div class="widget widget-about">
-	            				<img src="{{ asset('assets/images/demos/demo-3/logo-footer.png') }}" class="footer-logo" alt="Footer Logo" width="170" height="25">
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget widget-about">
+                                <img src="{{ asset('assets/images/demos/demo-3/logo-footer.png') }}"
+                                    class="footer-logo" alt="Footer Logo" width="170" height="25">
 
-	            				<div class="widget-call">
+                                <div class="widget-call">
                                     <i class="icon-phone"></i>
                                     Got Question? Call us 24/7
                                     <a href="tel:#">+08494 862 622</a>
                                 </div><!-- End .widget-call -->
-	            			</div><!-- End .widget about-widget -->
-	            		</div><!-- End .col-sm-6 col-lg-3 -->
+                            </div><!-- End .widget about-widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-	            		<div class="col-sm-6 col-lg-3">
-	            			<div class="widget">
-	            				<h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
-	            				<ul class="widget-list">
-	            					<li><a href="about.html">About Techolic</a></li>
+                                <ul class="widget-list">
+                                    <li><a href="about.html">About Techolic</a></li>
                                     <li><a href="#">Our Services</a></li>
-	            					<li><a href="#">How to shop on Techolic</a></li>
-	            					<li><a href="faq.html">FAQ</a></li>
-	            					<li><a href="contact.html">Contact us</a></li>
-	            				</ul><!-- End .widget-list -->
-	            			</div><!-- End .widget -->
-	            		</div><!-- End .col-sm-6 col-lg-3 -->
+                                    <li><a href="#">How to shop on Techolic</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-	            		<div class="col-sm-6 col-lg-3">
-	            			<div class="widget">
-	            				<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
 
-	            				<ul class="widget-list">
-	            					<li><a href="#">Payment Methods</a></li>
-	            					<li><a href="#">Money-back guarantee!</a></li>
-	            					<li><a href="#">Returns</a></li>
-	            					<li><a href="#">Shipping</a></li>
-	            					<li><a href="#">Terms and conditions</a></li>
-	            					<li><a href="#">Privacy Policy</a></li>
-	            				</ul><!-- End .widget-list -->
-	            			</div><!-- End .widget -->
-	            		</div><!-- End .col-sm-6 col-lg-3 -->
+                                <ul class="widget-list">
+                                    <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back guarantee!</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Terms and conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-	            		<div class="col-sm-6 col-lg-3">
-	            			<div class="widget">
-	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
-	            				<ul class="widget-list">
-	            					<li><a href="{{ route('publicLogin') }}">Sign In</a></li>
+                                <ul class="widget-list">
+                                    <li><a href="{{ route('publicLogin') }}">Sign In</a></li>
                                     <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>
 	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>
 	            					<li><a href="wishlist.html">My Wishlist</a></li>
@@ -365,14 +393,16 @@
 	            </div><!-- End .container -->
 	        </div><!-- End .footer-middle -->
 
-	        <div class="footer-bottom">
-	        	<div class="container">
-	        		<p class="footer-copyright">Copyright © 2024 Techolic Store. All Rights Reserved.</p><!-- End .footer-copyright -->
-	        		<figure class="footer-payments">
-	        			<img src="{{ asset('assets/images/payments.png') }}" alt="Payment methods" width="272" height="20">
-	        		</figure><!-- End .footer-payments -->
-	        	</div><!-- End .container -->
-	        </div><!-- End .footer-bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="footer-copyright">Copyright © 2024 Techolic Store. All Rights Reserved.</p>
+                    <!-- End .footer-copyright -->
+                    <figure class="footer-payments">
+                        <img src="{{ asset('assets/images/payments.png') }}" alt="Payment methods" width="272"
+                            height="20">
+                    </figure><!-- End .footer-payments -->
+                </div><!-- End .container -->
+            </div><!-- End .footer-bottom -->
         </footer><!-- End .footer -->
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
@@ -386,21 +416,25 @@
 
             <form action="#" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
+                    placeholder="Search in..." required>
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form>
 
             <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+                    <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab"
+                        role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
+                    <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab"
+                        role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
                 </li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel" aria-labelledby="mobile-menu-link">
+                <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel"
+                    aria-labelledby="mobile-menu-link">
                     <nav class="mobile-nav">
                         <ul class="mobile-menu">
                             <li class="active">
@@ -415,10 +449,12 @@
                                     <li><a href="#">Pixel 7a</a></li>
                                     <li><a href="#">Macbook Air M3</a></li>
                                     <li><a href="#">Asus Zenfones 11</a></li>
-                                    <li><a href="#"><span>iPhone 11<span class="tip tip-hot">Hot</span></span></a></li>
+                                    <li><a href="#"><span>iPhone 11<span
+                                                    class="tip tip-hot">Hot</span></span></a></li>
                                     <li><a href="#">Asus ROG Phone 5</a></li>
                                     <li><a href="productSamsungGalaxyFold5.html">Samsung Galaxy Z Fold 5</a></li>
-                                    <li><a href="#"><span>Samsung Galaxy s24 Ultra<span class="tip tip-new">New</span></span></a></li>
+                                    <li><a href="#"><span>Samsung Galaxy s24 Ultra<span
+                                                    class="tip tip-new">New</span></span></a></li>
                                 </ul>
                             </li>
 
@@ -426,7 +462,8 @@
                                 <a href="product.html" class="sf-with-ul">ACCESSORIES</a>
                                 <ul>
                                     <li><a href="category.html">Smartphones</a></li>
-                                    <li><a href="#"><span>Tablets<span class="tip tip-new">New</span></span></a></li>
+                                    <li><a href="#"><span>Tablets<span class="tip tip-new">New</span></span></a>
+                                    </li>
                                     <li><a href="#">Earphones and Headphones</a></li>
                                     <li><a href="#">Phone Cases</a></li>
                                     <li><a href="#">Screen Protector</a></li>
@@ -476,10 +513,14 @@
             </div><!-- End .tab-content -->
 
             <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i
+                        class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i
+                        class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i
+                        class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i
+                        class="icon-youtube"></i></a>
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
@@ -488,25 +529,26 @@
 
 
     <!-- Plugins JS File -->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.hoverIntent.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>
-    <script src="{{asset('assets/js/superfish.min.js')}}"></script>
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-input-spinner.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.plugin.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.hoverIntent.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/js/superfish.min.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-input-spinner.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.plugin.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
     <!-- Main JS File -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
-    <script src="{{asset('assets/js/demos/demo-3.js')}}"></script>
-    <script src="{{asset('assets/js/cart.js')}}"></script>
-    <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/demos/demo-3.js') }}"></script>
+    <script src="{{ asset('assets/js/cart.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     @stack('js')
 </body>
 
 
 <!-- molla/index-3.html  22 Nov 2019 09:55:58 GMT -->
+
 </html>
