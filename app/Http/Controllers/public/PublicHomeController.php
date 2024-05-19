@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
+use DB;
+
 
 class PublicHomeController extends Controller
 {
@@ -21,12 +23,17 @@ class PublicHomeController extends Controller
     }
     public function postRegister(Request $request){ 
         //validate
-        $request-> merge(['password' => Hash::make($request->password)]);
+
+        $data = $request->except('_token');
+        Hash::make( $request->password );
         try {
-            User::create($request->all());
+            User::create( $data );
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('publicLogin');
+        
+        return redirect()->route('login');
+        // dd($data);
+        
     }
 }
