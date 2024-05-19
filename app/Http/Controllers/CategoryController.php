@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Varient;
 
 class CategoryController extends Controller
 {
@@ -71,10 +72,11 @@ class CategoryController extends Controller
         return Category::all();
     }
     public function category($slug){
-        $category = Category::where('name',$slug)->first();
+        $category = Category::where('id',$slug)->first();
         
         $product = Product::where('category_id',$category -> id)-> get();
+        $varient = Varient::where('id', $product->id)->get();
 
-        return view('public.category.index',compact('product'));
+        return view('public.category.index',compact('product','varient'));
     }
 }

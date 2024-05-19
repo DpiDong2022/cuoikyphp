@@ -72,9 +72,9 @@
                                 <label>Color:</label>
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #a8d3eb;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #ebdea8;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                    @foreach($varient as $value)
+                                    <a href="#" class="active" style="background: {$value -> color};"><span class="sr-only">Color name</span></a>
+                                    @endforeach
                                 </div><!-- End .product-nav -->
                             </div><!-- End .details-filter-row -->
 
@@ -83,10 +83,9 @@
                                 <div class="select-custom">
                                     <select name="size" id="size" class="form-control">
                                         <option value="#" selected="selected">64GB</option>
-                                        <option value="s">128GB</option>
-                                        <option value="m">256GB</option>
-                                        <option value="l">512GB</option>
-                                        <option value="xl">1TB</option>
+                                        @foreach($varient as $value)
+                                        <option value="s">{{ $value-> storage }}</option>
+                                        @endforeach
                                     </select>
                                 </div><!-- End .select-custom -->
 

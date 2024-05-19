@@ -53,7 +53,7 @@
                         <div class="product">
                             <figure class="product-media">
                                 <span class="product-label label-new">New</span>
-                                <a href="{{ route('product-detail',['id'=>$value->id]) }}">
+                                <a href="{{ route('product_detail',['id'=>$value->id]) }}">
                                     <img src="{{ $value->image }}" alt="Product image" class="product-image">
                                 </a>
 
@@ -72,7 +72,7 @@
                                 <div class="product-cat">
                                     <a href="#">Apple</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="{{ route('product-detail',['id'=>$value->id]) }}">{{ $value -> name }}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="{{ route('product_detail',['id'=>$value->id]) }}">{{ $value -> name }}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                     $990.00
                                 </div><!-- End .product-price -->
@@ -84,8 +84,9 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #1c1b1b;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" class="active" style="background: #d5f3f8;"><span class="sr-only">Color name</span></a>
+                                    @foreach($varient as $value)
+                                    <a href="#" style="background: {$value -> color};"><span class="sr-only">Color name</span></a>
+                                    
                                 </div><!-- End .product-nav -->
 
                             </div><!-- End .product-body -->
