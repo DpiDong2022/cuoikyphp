@@ -32,7 +32,7 @@
                                         @csrf
 							    		<div class="form-group">
 							    			<label for="register-email-2">Your email address *</label>
-							    			<input type="email" class="form-control" id="register-email-2" name="username" required>
+							    			<input type="email" class="form-control" id="register-email-2" name="name" required>
 							    		</div><!-- End .form-group -->
 
 							    		{{-- <div class="form-group">
