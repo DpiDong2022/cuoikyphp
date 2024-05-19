@@ -32,7 +32,7 @@
                     <span class="icon text-white-50">
                         <i style="color:white;" class="fa fa-file-excel" aria-hidden="true"></i>
                     </span>
-                    <span class="text">Export Template Excelss</span>
+                    <span class="text">Export Template Excel</span>
                 </a>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importExcelModal">
                     Import Excel

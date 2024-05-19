@@ -67,14 +67,9 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
 
         Route::get('/create-post', [PostController::class, 'create'])->name('post.create');
         Route::get('/export-template', function () {
-            $path = public_path('them_sanpham_templatecomposer require maatwebsite/excel.xlsx');
-            return response()->file($path);
-        })->name('product.export-template');
-
-        Route::get('/export-templatee', function () {
-            $path = public_path('them_sanpham_template.xlsx');
+            $path = public_path('them_sanpham_template.xls');
             return response()->download($path);
-        })->name('product.export-templatee');
+        })->name('product.export-template');
     });
 });
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');
