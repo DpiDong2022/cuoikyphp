@@ -66,10 +66,10 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::patch('orders/{order}/status', [orderDetailsController::class, 'updateStatus'])->name('order.updateStatus');
 
         Route::get('/create-post', [PostController::class, 'create'])->name('post.create');
-        Route::get('/export-template', function () {
-            $path = public_path('them_sanpham_template.xls');
-            return response()->download($path);
-        })->name('product.export-template');
+        // Route::get('/export-template', function () {
+        //     $path = public_path('them_sanpham_template.xlsx');
+        //     return response()->download($path);
+        // })->name('product.export-template');
     });
 });
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');

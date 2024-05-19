@@ -19,14 +19,14 @@
             		<div class="form-box">
             			<div class="form-tab">
 	            			<ul class="nav nav-pills nav-fill" role="tablist">
-							    
+
 							    <li class="nav-item">
 							        <a class="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
 							    </li>
 							</ul>
-                            
+
 							<div class="tab-content">
-							    
+
 							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
 							    	<form action="#" method = "POST">
                                         @csrf
@@ -35,21 +35,21 @@
 							    			<input type="email" class="form-control" id="register-email-2" name="username" required>
 							    		</div><!-- End .form-group -->
 
-							    		<div class="form-group">
+							    		{{-- <div class="form-group">
 							    			<label for="register-password-2">Password *</label>
 							    			<input type="password" class="form-control" id="register-password-2" name="password" required>
-							    		</div><!-- End .form-group -->
+							    		</div><!-- End .form-group --> --}}
 
 							    		<div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">
-			                					<span>SIGN UP</span>
+			                					<span>CONTINUE</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
 
-			                				<div class="custom-control custom-checkbox">
+			                				{{-- <div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="register-policy-2" required>
 												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
-											</div><!-- End .custom-checkbox -->
+											</div><!-- End .custom-checkbox --> --}}
 							    		</div><!-- End .form-footer -->
 							    	</form>
 							    	<div class="form-choice">
@@ -92,7 +92,7 @@
                 <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form>
-            
+
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li>
@@ -234,14 +234,14 @@
 
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
+                                                <span>CONTINUE</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
 
-                                            <div class="custom-control custom-checkbox">
+                                            {{-- <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="register-policy" required>
                                                 <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
-                                            </div><!-- End .custom-checkbox -->
+                                            </div><!-- End .custom-checkbox --> --}}
                                         </div><!-- End .form-footer -->
                                     </form>
                                     <div class="form-choice">
