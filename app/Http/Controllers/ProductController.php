@@ -153,4 +153,10 @@ class ProductController extends Controller
     {
         return Product::all();
     }
+    public function product_detail($id){
+        $pro = Product::find($id);
+        $varient = Varient::where('id', $pro->id)->get();
+        return view('public.product.product_detail',compact('pro','varient'));
+    }
 }
+
