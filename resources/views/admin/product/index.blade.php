@@ -98,7 +98,7 @@
                                 <td>
                                     <div class="description-content">
                                         <span
-                                            class="short-description">{{ Str::limit($product->description, 100) }}</span>
+                                            class="short-description">{{Str::limit($product->description, 100) }}</span>
                                         <span class="full-description d-none">{{ $product->description }}</span>
                                         @if (Str::length($product->description) > 100)
                                             <a href="javascript:void(0)" class="read-more">Read More</a>
