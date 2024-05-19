@@ -19,18 +19,19 @@ class ProductController extends Controller
     {
         return view('admin.product.index', ['products' => $this->list()]);
     }
-    public function publicIndex(){
+    public function publicIndex()
+    {
         // $all_products = DB::table('products')
         // ->join('category','id','=','products.category_id')
         // ->orderby('products.id','desc')->get();
         $product = Product::all();
-        $category = Category::orderBy('name','ASC')->get();
-        $all_products = DB::table('products')->orderby('products.id','desc')->limit(20)->get();
+        $category = Category::orderBy('name', 'ASC')->get();
+        $all_products = DB::table('products')->orderby('products.id', 'desc')->limit(20)->get();
 
         //return view('public.product.index', ['products' => Product::all(), 'category' => Category::orderBy('name','ASC')->get()]) ;
-        return view('public.product.index',compact('product','category','all_products'));
+        return view('public.product.index', compact('product', 'category', 'all_products'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -50,18 +51,19 @@ class ProductController extends Controller
         // Validate the request data
         try {
             $request->validate([
-                'name' => 'required',
-                'price' => 'required|numeric',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the image validation rules as needed
-                'description' => 'required',
-                'discount' => 'nullable|numeric',
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric|min:0',
+                'image' => 'required|image|mimes:webp,jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed
+                'description' => 'nullable|string',
+                'discount' => 'nullable|numeric|min:0|max:100',
                 'category_id' => 'required|exists:categories,id',
                 'variants.*.color' => 'required',
                 'variants.*.memory' => 'required',
                 'variants.*.storage' => 'required',
-                'variants.*.image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'variants.*.image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
                 'variants.*.quantity' => 'required|numeric',
                 'variants.*.minimum_qty' => 'required|numeric',
+                'variants.*.price' => 'required|numeric|min:0',
             ]);
 
             // Handle product creation
@@ -70,12 +72,12 @@ class ProductController extends Controller
             $product->name = $request->name;
             $product->price = $request->price;
             $product->description = $request->description;
-            $product->discount = $request->discount;
+            $product->discount = ($request->discount == null ? 0: $request->discount);
             $product->category_id = $request->category_id;
 
             // Upload and store product image as Base64
             $productImageBase64 = base64_encode(file_get_contents($request->file('image')));
-            $product->image = "data:image/jpeg;base64,".$productImageBase64;
+            $product->image = "data:image/jpeg;base64," . $productImageBase64;
 
             $product->save();
 
@@ -86,13 +88,14 @@ class ProductController extends Controller
                 $variant->product_id = $product->id;
                 $variant->color = $variantData['color'];
                 $variant->memory = $variantData['memory'];
-                $variant->storage = str_replace("GB", "", $variantData['storage']);;
+                $variant->price = $variantData['price'];
+                $variant->storage = $variantData['storage'];
                 $variant->quantity = $variantData['quantity'];
                 $variant->minimum_qty = $variantData['minimum_qty'];
 
                 // Upload and store variant image as Base64
                 $variantImageBase64 = base64_encode(file_get_contents($variantData['image']));
-                $variant->image = "data:image/jpeg;base64,".$variantImageBase64;
+                $variant->image = "data:image/jpeg;base64," . $variantImageBase64;
 
                 $variant->save();
             }
@@ -112,34 +115,51 @@ class ProductController extends Controller
         //
     }
 
+    public function editProduct()
+    {
+        return view('admin.product.editProduct', ['categories' => Category::all()]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $id)
+    public function edit(Product $product)
     {
-        return view('admin.product.edit', ['categories' => Category::all(), 'product' => Product::find($id)]);
+        $categories = Category::all();
+        return view('admin.product.edit', compact(['product', 'categories']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, Product $product)
     {
-        // $data = $request -> validate([
-        //     'id' => ['required','int'],
-        //     'category_id' => ['required','string'],
-        //     'name'        => ['required','string'],
-        //     'description' => ['required','string'],
-        //     'price'       => ['required','int'],
-        //     'discount'    => ['required','int'],
-        //     'image'       => ['required','string']
-        // ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:webp, jpeg,png,jpg,gif,svg|max:2048', // Adjust the image validation rules as needed
+            'description' => 'nullable|string',
+            'discount' => 'nullable|numeric|min:0|max:100',
+            'category_id' => 'required|exists:categories,id',
+        ]);
 
-        // dd($data);
+        // Update product details from the request
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->discount = $request->discount;
+        $product->category_id = $request->category_id;
 
-        // Product::get;
+        // If a new image is uploaded, convert it to Base64 and save it
+        if ($request->hasFile('image')) {
+            $productImageBase64 = "data:image/jpeg;base64,".base64_encode(file_get_contents($request->file('image')));
+            $product->image = $productImageBase64;
+        }
 
-        // return to_route("product.edit", $product) -> with('message','Sửa sản phẩm thành công');
+        $product->save();
+
+        // Redirect or return response as needed
+        return redirect()->route('product.edit', $product)->with('success', 'Product updated successfully');
     }
 
     /**

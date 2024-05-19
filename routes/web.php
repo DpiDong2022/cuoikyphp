@@ -6,6 +6,7 @@ use App\Http\Controllers\public\CartController;
 use App\Http\Controllers\public\PublicHomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VarientController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AppController;
@@ -29,7 +30,7 @@ Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
 Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("category");
 
-Route::get('/product',[ProductController::class,'publicIndex'])->name('public.product.index');
+Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
@@ -39,12 +40,17 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
     Route::get('/admin', [AdminHomeController::class, 'index'])->name('Admin.index');
     Route::prefix('admin')->group(function () {
         Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-        Route::get('/product/edit{id}', [ProductController::class, 'edit'])->name("product.edit");
-        // Route::post('/product/udpate', [ProductController::class, 'update'])->name('product.update');
-        // Route::get('/product/insert', [ProductController::class, 'create'])->name('product.insert');
 
         Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-        Route::post('/product/store', [ProductController :: class,'store'])->name('product.store');
+        Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+        Route::get('products/{id}/variants', [VarientController::class, 'index'])->name('varient.index');
+        Route::get('varients/{varient}/edit', [VarientController::class, 'edit'])->name('varient.edit');
+        Route::put('varient/update/{id}', [VarientController::class, 'update'])->name('varient.update');
+        Route::post('varient/store', [VarientController::class, 'store'])->name('varient.store');
+
 
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
         Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
