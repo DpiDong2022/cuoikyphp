@@ -36,6 +36,15 @@ Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("c
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
+
+Route::group(['prefix'=> 'cart'],function(){
+    Route::get('/',[CartController::class,'index'])->name('cart.index');
+    Route::get('/add/{product}',[CartController::class,'add'])->name('cart.add');
+    Route::get('/delete/{product}',[CartController::class,'delete'])->name('cart.delete');
+    Route::get('/update/{product}',[CartController::class,'update'])->name('cart.update');
+    Route::get('/clear',[CartController::class,'clear'])->name('cart.clear');
+});
+
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC

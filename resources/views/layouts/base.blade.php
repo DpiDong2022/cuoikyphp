@@ -184,7 +184,7 @@
                                 </div><!-- End .dropdown-cart-total -->
 
                                 <div class="dropdown-cart-action">
-                                    <a href="cart.html" class="btn btn-primary">View Cart</a>
+                                    <a href="{{ route('cart.index') }}" class="btn btn-primary">View Cart</a>
                                     <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .dropdown-cart-total -->
                             </div><!-- End .dropdown-menu -->
@@ -354,7 +354,7 @@
 	            				<ul class="widget-list">
 	            					<li><a href="{{ route('publicLogin') }}">Sign In</a></li>
                                     <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>
-	            					<li><a href="cart.html">View Cart</a></li>
+	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>
 	            					<li><a href="wishlist.html">My Wishlist</a></li>
 	            					<li><a href="#">Track My Order</a></li>
 	            					<li><a href="#">Help</a></li>
@@ -447,7 +447,7 @@
                                     </li>
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="faq.html">FAQs</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="{{ route('cart.index') }}">Cart</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                 </ul>
