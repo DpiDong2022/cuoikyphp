@@ -47,6 +47,29 @@
     <div class="card">
         <div class="container">
             <h1 class="h3 mb-4 text-gray-800">Danh sách sản phẩm</h1>
+
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('product.create') }}" class="btn btn-success btn-icon-split mb-4">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <span class="text">Thêm sản phẩm</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <!-- Category Filter -->
+                    <div class="mb-4">
+                        <select id="categoryFilter" style="width: 150px;" class="form-control">
+                            <option value="">All Categories</option>
+                            @foreach ($category as $categori)
+                                <option value="{{ $categori->name }}">{{ $categori->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable">
                     <thead class="thead-dark">
@@ -119,7 +142,17 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-    $("#dataTable").DataTable();
+    var table = $('#dataTable').DataTable();
+
+    // Filter table based on category selection
+    $('#categoryFilter').on('change', function() {
+        var selectedCategory = $(this).val();
+        if (selectedCategory) {
+            table.column(4).search('^' + selectedCategory + '$', true, false).draw();
+        } else {
+            table.column(4).search('').draw();
+        }
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.read-more').forEach(function(element) {

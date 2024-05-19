@@ -115,11 +115,6 @@ class ProductController extends Controller
         //
     }
 
-    public function editProduct()
-    {
-        return view('admin.product.editProduct', ['categories' => Category::all()]);
-    }
-
     /**
      * Show the form for editing the specified resource.
      */

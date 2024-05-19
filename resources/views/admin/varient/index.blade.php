@@ -53,7 +53,12 @@
 
             <h1>Sản phẩm {{ $product->name }}</h1>
 
-            <a class="btn btn-primary" href="{{ route('product.index') }}">Back to Products</a>
+            <a href="{{ route('product.index') }}" class="btn btn-success btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span class="text">Back to Products</span>
+            </a>
             <button class="btn btn-primary" data-toggle="modal" data-target="#addVariantModal">Add variant</button>
 
             <table class="table table-bordered mt-3">

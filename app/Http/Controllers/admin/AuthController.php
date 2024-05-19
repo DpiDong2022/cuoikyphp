@@ -33,10 +33,9 @@ class AuthController extends Controller
         if (Auth::guard('account')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            $accountId = Auth::guard('account')->user()->id;
             Auth::login(Auth::guard('account')->user());
 
-            session(['account_id' => $accountId]);
+            session(['account' => Auth::guard('account')->user()]);
 
             return redirect()->intended(route('Admin.index'));
         }
