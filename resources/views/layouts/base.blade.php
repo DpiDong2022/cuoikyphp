@@ -238,19 +238,14 @@
                                                         <div class="col-md-6">
                                                             <div class="menu-title">Smartphones</div><!-- End .menu-title -->
                                                             <ul>
-<<<<<<< HEAD
+
                                                                 @foreach($category as $value )
-                                                                <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li>
-                                                                @endforeach
-=======
-                                                                @foreach($category as $value ) 
                                                                 {{-- <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
                                                                 <li><a href="{{ route('category',['slug'=>$value->id]) }}"><span>{{ $value->name }}<span ></span></span></a></li>
-                                                                
+
                                                                 {{-- <li><a href="#">{{ $value-> name }}</a></li> --}}
-                                                                
-                                                                @endforeach 
->>>>>>> b1fcad4eb794d92434a54ee552bc674a4ce30d3c
+
+                                                                @endforeach
                                                             </ul>
 
 

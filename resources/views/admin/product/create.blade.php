@@ -27,6 +27,18 @@
                 </div>
             @endif
 
+            <div class="mb-3">
+                <a href="{{ route('product.export-template') }}" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i style="color:white;" class="fa fa-file-excel" aria-hidden="true"></i>
+                    </span>
+                    <span class="text">Export Template Excel</span>
+                </a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importExcelModal">
+                    Import Excel
+                </button>
+            </div>
+
             <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -136,7 +148,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <a id="addVariantBtn" class="btn btn-primary text-white btn-icon-split btn-lg" onclick="addVariant()">
+                <a id="addVariantBtn" class="btn btn-primary text-white btn-icon-split btn-lg"
+                    onclick="addVariant()">
                     <span class="text">Add variant</span>
                 </a>
 
@@ -149,8 +162,38 @@
             </form>
         </div>
     </div>
+    <!-- Import Excel modal -->
+    <div class="modal fade" id="importExcelModal" tabindex="-1" role="dialog"
+        aria-labelledby="importExcelModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importExcelModalLabel">Import Excel</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="excelFile">Choose Excel File</label>
+                            <input type="file" class="form-control-file" id="excelFile" name="file" required
+                                accept=".xlsx, .xls">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </x-admin.layout>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 <script>
     function previewImage(input, variantIndex) {
         if (input.files && input.files[0]) {
