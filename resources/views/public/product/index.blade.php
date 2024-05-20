@@ -61,11 +61,7 @@
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                 </div><!-- End .product-action -->
 
-                                <div class="product-action action-icon-top">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.php" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                    <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
-                                </div><!-- End .product-action -->
+                                
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">

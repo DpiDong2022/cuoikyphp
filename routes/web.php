@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VarientController;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AppController;
@@ -40,6 +41,15 @@ Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 
+Route::middleware([UserMiddleware::class])->group(function () {
+Route::group(['prefix'=> 'cart'],function(){
+    Route::get('/',[CartController::class,'index'])->name('cart.index');
+    Route::get('/add/{product}',[CartController::class,'add'])->name('cart.add');
+    Route::get('/delete/{product}',[CartController::class,'delete'])->name('cart.delete');
+    Route::get('/update/{product}',[CartController::class,'update'])->name('cart.update');
+    Route::get('/clear',[CartController::class,'clear'])->name('cart.clear');
+});
+});
 
 Route::get('/emailVerify', [PublicHomeController::class, 'indexVerifyEmail'])->name('email.formVerify');
 Route::post('/sendTokenToEmail', [PublicHomeController::class, 'sendTokenToEmail'])->name('email.sendToken');
@@ -47,12 +57,14 @@ Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name(
 Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
 Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
 
+
 Route::get('/reset/enterEmail', [ResetPasswordController::class, 'emailForm'])->name('email.enterEmail');
 Route::get('/reset/enterToken', [ResetPasswordController::class, 'tokenForm'])->name('email.enterToken');
 Route::get('/reset/enterPassword', [ResetPasswordController::class, 'passwordForm'])->name('email.enterPassword');
 Route::post('/reset/senToken', [ResetPasswordController::class, 'sendToken'])->name('reset.sendToken');
 Route::post('/reset/verifyEmail', [ResetPasswordController::class, 'verifyEmail'])->name('reset.verifyEmail');
 Route::post('/reset/savePassword', [ResetPasswordController::class, 'savePassword'])->name('reset.savePassword');
+
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
