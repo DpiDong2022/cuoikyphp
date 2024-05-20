@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VarientController;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AppController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\admin\addUserController;
 
 use App\Http\Controllers\admin\credInfoController;
 use App\Http\Middleware\EnsureUserLoginAdmin;
+use App\Http\Middleware\CheckUserRoleForAccounts;
 
 use App\Http\Controllers\admin\orderController;
 use App\Http\Controllers\admin\orderDetailsController;
@@ -40,6 +42,15 @@ Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 
+Route::middleware([UserMiddleware::class])->group(function () {
+Route::group(['prefix'=> 'cart'],function(){
+    Route::get('/',[CartController::class,'index'])->name('cart.index');
+    Route::get('/add/{product}',[CartController::class,'add'])->name('cart.add');
+    Route::get('/delete/{product}',[CartController::class,'delete'])->name('cart.delete');
+    Route::get('/update/{product}',[CartController::class,'update'])->name('cart.update');
+    Route::get('/clear',[CartController::class,'clear'])->name('cart.clear');
+});
+});
 
 Route::get('/emailVerify', [PublicHomeController::class, 'indexVerifyEmail'])->name('email.formVerify');
 Route::post('/sendTokenToEmail', [PublicHomeController::class, 'sendTokenToEmail'])->name('email.sendToken');
@@ -47,12 +58,14 @@ Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name(
 Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
 Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
 
+
 Route::get('/reset/enterEmail', [ResetPasswordController::class, 'emailForm'])->name('email.enterEmail');
 Route::get('/reset/enterToken', [ResetPasswordController::class, 'tokenForm'])->name('email.enterToken');
 Route::get('/reset/enterPassword', [ResetPasswordController::class, 'passwordForm'])->name('email.enterPassword');
 Route::post('/reset/senToken', [ResetPasswordController::class, 'sendToken'])->name('reset.sendToken');
 Route::post('/reset/verifyEmail', [ResetPasswordController::class, 'verifyEmail'])->name('reset.verifyEmail');
 Route::post('/reset/savePassword', [ResetPasswordController::class, 'savePassword'])->name('reset.savePassword');
+
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
@@ -77,6 +90,7 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
         Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
         Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        Route::delete('/admin/accounts/{id}', [credInfoController::class, 'destroy'])->name('account.destroy');
 
         Route::get('/order', [orderController::class, 'showInvoice'])->name('order.info');
         Route::get('/order/{order}', [orderDetailsController::class, 'show'])->name('order.detail');
@@ -87,8 +101,20 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         //     $path = public_path('them_sanpham_template.xlsx');
         //     return response()->download($path);
         // })->name('product.export-template');
+
+        // Route::middleware([CheckUserRoleForAccounts::class])->group(function () {
+        //     // Routes accessible only to users with role ID 2
+        //     Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
+        //     Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
+        //     Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        //     Route::delete('/admin/accounts/{id}', [credInfoController::class, 'destroy'])->name('account.destroy');
+        //     // Add more routes as needed
+        // });
     });
 });
+
+
+
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login');
 Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');

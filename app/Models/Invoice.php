@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Events\OrderCreated;
 /**
  * App\Models\Order
  *
@@ -47,10 +47,12 @@ class Invoice extends Model
         return $this -> hasMany(InvoiceDetail::class, 'invoice_id');
     }
 
-    
+    protected static function boot()
+    {
+        parent::boot();
 
-    // public function varients()
-    // {
-    //     return $this -> hasManyThrough(Varient::class, InvoiceDetail::class, 'invoice_id', 'varient_id', 'id', 'id');
-    // }
+        static::created(function ($invoice) {
+            event(new OrderCreated($invoice));
+        });
+    }
 }

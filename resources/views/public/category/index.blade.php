@@ -83,11 +83,7 @@
                                     <span class="ratings-text">( 1.3k Reviews )</span>
                                 </div><!-- End .rating-container -->
 
-                                <div class="product-nav product-nav-dots">
-                                    @foreach($varient as $value)
-                                    <a href="#" style="background: {$value -> color};"><span class="sr-only">Color name</span></a>
-                                    
-                                </div><!-- End .product-nav -->
+                                ><!-- End .product-nav -->
 
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->

@@ -75,8 +75,8 @@ class CategoryController extends Controller
         $category = Category::where('id',$slug)->first();
         
         $product = Product::where('category_id',$category -> id)-> get();
-        $varient = Varient::where('id', $product->id)->get();
+        
 
-        return view('public.category.index',compact('product','varient'));
+        return view('public.category.index',compact('product'));
     }
 }

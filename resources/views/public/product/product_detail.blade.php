@@ -50,7 +50,7 @@
 
                     <div class="col-md-6">
                         <div class="product-details product-details-centered">
-                            <h1 class="product-title">iPhone 15 512GB</h1><!-- End .product-title -->
+                            <h1 class="product-title">{{ $pro-> name }}</h1><!-- End .product-title -->
 
                             <div class="ratings-container">
                                 <div class="ratings">
@@ -60,7 +60,7 @@
                             </div><!-- End .rating-container -->
 
                             <div class="product-price">
-                                $999.00
+                                {{ $pro -> price }}
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
@@ -72,21 +72,20 @@
                                 <label>Color:</label>
 
                                 <div class="product-nav product-nav-dots">
-                                    @foreach($varient as $value)
-                                    <a href="#" class="active" style="background: {$value -> color};"><span class="sr-only">Color name</span></a>
+                                    @foreach($pro->varients as $index => $varient)
+                                        <a href="#" class="color-link" style="background: {{ $varient->color }};" data-id="{{ $varient->id }}"><span class="sr-only"></span></a>
                                     @endforeach
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .details-filter-row -->
-
+                                </div>
+                            </div>
                             <div class="details-filter-row details-row-size">
                                 <label for="size">Storage:</label>
                                 <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="#" selected="selected">64GB</option>
-                                        @foreach($varient as $value)
-                                        <option value="s">{{ $value-> storage }}</option>
-                                        @endforeach
-                                    </select>
+                        
+                                <select name="size" id="size" class="form-control">
+                                    @foreach($pro->varients as $index => $varient)
+                                        <option value="{{ $varient->id }}">{{ $varient-> storage }}</option>
+                                    @endforeach
+                                </select>
                                 </div><!-- End .select-custom -->
 
                                 <!-- <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a> -->
@@ -95,29 +94,31 @@
                             <div class="product-details-action">
                                 <div class="details-action-col">
                                     <div class="product-details-quantity">
-                                        <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                        <input type="number" id="qty" class="form-control" value="1" min="1" max="50" step="1" data-decimals="0" required>
                                     </div><!-- End .product-details-quantity -->
-
-                                    <a href="#" class="btn-product btn-cart add-to-cart"
-                                    data-id="5"
-                                    data-title="iPhone 15 Pro Max"
-                                    data-image="assets/images/iPhone/iphone15blue.webp"
-                                    data-price="990.00"
-                                    ><span>add to cart</span></a>
+                                
+                                    @if(session('user'))
+                                        <a href="#" id="add-to-cart" class="btn-product btn-cart add-to-cart"
+                                           data-id=""
+                                           data-title="{{ $pro -> name }}"
+                                           data-image="{{ $pro -> image }}"
+                                           data-price="{{ $pro-> price }}"
+                                        ><span>add to cart</span></a>
+                                    @else
+                                        <a href="{{ route('publicLogin') }}" onclick="alert('Please login first !')" class="btn-product btn-cart add-to-cart"
+                                        ><span>add to cart</span></a>
+                                    @endif
                                 </div><!-- End .details-action-col -->
 
-                                <div class="details-action-wrapper">
-                                    <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
-                                    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a>
-                                </div><!-- End .details-action-wrapper -->
+                                
                             </div><!-- End .product-details-action -->
 
                             <div class="product-details-footer">
                                 <div class="product-cat">
                                     <span>Category:</span>
                                     <a href="#">Product</a>,
-                                    <a href="#">Apple</a>,
-                                    <a href="#">Light Blue</a>
+                                    <a href="#">{{ $pro -> name }}</a>,
+                                    
                                 </div><!-- End .product-cat -->
 
                                 <div class="social-icons social-icons-sm">
