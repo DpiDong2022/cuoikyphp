@@ -31,6 +31,12 @@ Route::get("/login/verify", [PublicHomeController::class, "veriryLogin"])->name(
 Route::get("/register", [PublicHomeController::class, "register"])->name("publicRegister");
 Route::post("/register", [PublicHomeController::class, "postRegister"]);
 Route::get("/publicLogout", [PublicHomeController::class, "publicLogout"]) -> name('publicLogout');
+Route::get('/about', [AppController::class, 'about'])->name("about");
+Route::get('/blog', [AppController::class, 'blog'])->name("blog");
+Route::get('/contact', [AppController::class, 'contact'])->name("contact");
+Route::get('/faq', [AppController::class, 'faq'])->name("faq");
+Route::get('/checkout', [AppController::class, 'checkout'])->name("checkout");
+
 
 Route::get('/cart', [CartController::class, 'Index'])->name("cart.index");
 Route::get('/category', [CategoryController::class, 'Index'])->name("category.index");
@@ -39,7 +45,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("c
 
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
-Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
+
 
 Route::middleware([UserMiddleware::class])->group(function () {
 Route::group(['prefix'=> 'cart'],function(){
