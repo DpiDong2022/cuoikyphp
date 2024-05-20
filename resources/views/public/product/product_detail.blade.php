@@ -73,7 +73,7 @@
                                     </p>
                                 </div><!-- End .product-content -->
 
-                                <form action="" method="POST">
+                                <form action="{{route('cart.add')}}" method="POST">
                                     @csrf
                                     <div class="details-filter-row details-row-size">
                                         <label>Color:</label>
@@ -91,7 +91,7 @@
                                         <label for="size">Storage:</label>
                                         <div class="select-custom">
                                             <select name="storage" id="storage" class="form-control" disabled required>
-                                                <option value="">Select Storagegg</option>
+                                                <option value="">Select Storage</option>
                                             </select>
                                             {{-- <select name="storage" id="storage" class="form-control">
                                                 @foreach ($pro->varients->unique('storage') as $value)
@@ -106,7 +106,7 @@
                                         <label for="size">Ram:</label>
                                         <div class="select-custom">
                                             <select name="memory" id="memory" class="form-control" disabled required>
-                                                <option value="">Select Memory</option>
+                                                <option value="">Select RAM</option>
                                             </select>
 
                                             {{-- <select name="memory" id="memory" class="form-control">
@@ -127,20 +127,19 @@
                                                     min="1" max="50" step="1" data-decimals="0" required>
                                             </div><!-- End .product-details-quantity -->
                                             @if ($pro->quantity == 0)
-                                                <a href="{{ route('publicLogin') }}"
+                                                <button type="submit"
                                                     class="btn-product btn-cart add-to-cart" disabled><span>add to
-                                                        cart</span></a>
+                                                        cart</span></button>
                                             @else
                                                 @if (session('user'))
-                                                    <a href="#" id="add-to-cart"
+                                                    <button type="submit" id="add-to-cart"
                                                         class="btn-product btn-cart add-to-cart" data-id=""
                                                         data-title="{{ $pro->name }}" data-image="{{ $pro->image }}"
-                                                        data-price="{{ $pro->price }}"><span>add to cart</span></a>
+                                                        data-price="{{ $pro->price }}"><span>add to cart</span></button>
                                                 @else
-                                                    <a href="{{ route('publicLogin') }}"
-                                                        onclick="alert('Please login first !')"
+                                                    <button  type="submit href="{{ route('publicLogin') }}"
                                                         class="btn-product btn-cart add-to-cart"><span>add to
-                                                            cart</span></a>
+                                                            cart</span></button>
                                                 @endif
                                             @endif
                                         </div><!-- End .details-action-col -->
@@ -619,15 +618,17 @@
             $('.color-link').on('click', function(e) {
                 e.preventDefault();
                 let selectedColor = $(this).data('color');
+                $('#color').val(selectedColor);
 
                 // Update storage options based on the selected color
                 let storages = varients.filter(varient => varient.color === selectedColor)
                     .map(varient => varient.storage)
                     .filter((value, index, self) => self.indexOf(value) ===
-                        index); // Get unique storage values
+                    index); // Get unique storage values
 
                 $('#storage').empty().append('<option value="">Select Storage</option>');
-                $('#memory').empty().append('<option value="">Select RAM</option>').prop('disabled', true);
+                $('#memory').empty().append('<option value="">Select Memory</option>').prop('disabled',
+                    true);
 
                 if (storages.length > 0) {
                     $('#storage').prop('disabled', false);
@@ -638,10 +639,16 @@
                 } else {
                     $('#storage').prop('disabled', true);
                 }
+
+                // Reset memory and disable add to cart button
+                $('#memory').prop('disabled', true);
+                // $('#add-to-cart').prop('disabled', true);
+
+                checkAllSelections();
             });
 
             $('#storage').on('change', function() {
-                let selectedColor = $('.color-link.active').data('color');
+                let selectedColor = $('#color').val();
                 let selectedStorage = $(this).val();
 
                 // Update memory options based on the selected color and storage
@@ -649,9 +656,9 @@
                         .storage === selectedStorage)
                     .map(varient => varient.memory)
                     .filter((value, index, self) => self.indexOf(value) ===
-                        index); // Get unique memory values
+                    index); // Get unique memory values
 
-                $('#memory').empty().append('<option value="">Select RAM</option>');
+                $('#memory').empty().append('<option value="">Select Memory</option>');
 
                 if (memories.length > 0) {
                     $('#memory').prop('disabled', false);
@@ -662,7 +669,21 @@
                 } else {
                     $('#memory').prop('disabled', true);
                 }
+
+                checkAllSelections();
             });
+
+            $('#memory').on('change', function() {
+                checkAllSelections();
+            });
+
+            // function checkAllSelections() {
+            //     if ($('#color').val() && $('#storage').val() && $('#memory').val()) {
+            //         $('#add-to-cart').prop('disabled', false);
+            //     } else {
+            //         $('#add-to-cart').prop('disabled', true);
+            //     }
+            // }
 
             // Mark the selected color as active
             $('.color-link').on('click', function() {
