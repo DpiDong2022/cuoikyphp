@@ -266,7 +266,7 @@
                                             <div class="col-md-4">
                                                 <div class="banner banner-overlay">
                                                     <a href="category.html" class="banner banner-menu">
-                                                        <img src="assets/images/menu/banner-1.jpg" alt="Banner">
+                                                        <img src="{{ asset('assets/images/menu/banner-1.jpg') }}" alt="Banner">
 
                                                         <div class="banner-content banner-content-top">
                                                             <div class="banner-title text-white">Last
@@ -335,11 +335,11 @@
                                 <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="about.html">About Techolic</a></li>
+                                    <li><a href="{{ route('about') }}">About Techolic</a></li>
                                     <li><a href="#">Our Services</a></li>
                                     <li><a href="#">How to shop on Techolic</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact us</a></li>
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -366,9 +366,7 @@
                                 <ul class="widget-list">
                                     <li><a href="{{ route('publicLogin') }}">Sign In</a></li>
                                     <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>
-	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>
-	            					<li><a href="wishlist.html">My Wishlist</a></li>
-	            					<li><a href="#">Track My Order</a></li>
+	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>	            						            					
 	            					<li><a href="#">Help</a></li>
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
@@ -427,54 +425,43 @@
 
                             </li>
                             <li>
-                                <a href="category.html">Shop</a>
+                                <a href="{{ route('public.product.index') }}">Shop</a>
                                 <ul>
-                                    <li><a href="productIphone15.html">iPhone 15 Pro Max</a></li>
-                                    <li><a href="#">Pixel 7a</a></li>
-                                    <li><a href="#">Macbook Air M3</a></li>
-                                    <li><a href="#">Asus Zenfones 11</a></li>
-                                    <li><a href="#"><span>iPhone 11<span
-                                                    class="tip tip-hot">Hot</span></span></a></li>
-                                    <li><a href="#">Asus ROG Phone 5</a></li>
-                                    <li><a href="productSamsungGalaxyFold5.html">Samsung Galaxy Z Fold 5</a></li>
-                                    <li><a href="#"><span>Samsung Galaxy s24 Ultra<span
-                                                    class="tip tip-new">New</span></span></a></li>
+                                    @foreach ($category as $value)
+                                                                    {{-- <li><a href="{{ URL::to('/category/'.$value->id) }}"><span>{{ $value->name }}<span ></span></span></a></li> --}}
+                                                                    <li><a
+                                                                            href="{{ route('category', ['slug' => $value->id]) }}"><span>{{ $value->name }}<span></span></span></a>
+                                                                    </li>
+
+                                                                    {{-- <li><a href="#">{{ $value-> name }}</a></li> --}}
+                                                                @endforeach
+                                    {{-- <li><a href="productIphone15.html">iPhone 15 Pro Max</a></li> --}}
+                                    
                                 </ul>
                             </li>
 
-                            <li>
-                                <a href="product.html" class="sf-with-ul">ACCESSORIES</a>
-                                <ul>
-                                    <li><a href="category.html">Smartphones</a></li>
-                                    <li><a href="#"><span>Tablets<span class="tip tip-new">New</span></span></a>
-                                    </li>
-                                    <li><a href="#">Earphones and Headphones</a></li>
-                                    <li><a href="#">Phone Cases</a></li>
-                                    <li><a href="#">Screen Protector</a></li>
-                                    <li><a href="#">Controllers</a></li>
-                                    <li><a href="#">Consoles</a></li>
-                                    <li><a href="#">Keyboards</a></li>
-                                </ul>
-                            </li>
+                            
 
                             <li>
                                 <a href="#">PAGES</a>
                                 <ul>
                                     <li>
-                                        <a href="about.html">About</a>
+                                        <a href="{{ route('about') }}">About</a>
                                     </li>
                                     <li>
                                         <a href="contact.html">Contact</a>
                                     </li>
-                                    <li><a href="login.html">Login</a></li>
+                                    
+
+                                    <li><a href="{{ route('publicLogin') }}">Sign In</a></li>
+                                    <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>                                   
                                     <li><a href="faq.html">FAQs</a></li>
                                     <li><a href="{{ route('cart.index') }}">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>                                   
                                 </ul>
                             </li>
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="{{ route('blog') }}">Blog</a>
                             </li>
                         </ul>
                     </nav><!-- End .mobile-nav -->

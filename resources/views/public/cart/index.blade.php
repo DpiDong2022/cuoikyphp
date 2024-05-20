@@ -34,30 +34,35 @@
                             </thead>
 
                             <tbody id="cart">
+                                @foreach($invoiceDetails as $value )
                                 <tr>
                                     <td class="product-col">
                                         <div class="product">
                                             <figure class="product-media">
                                                 <a href="#">
-                                                    <img src="assets/images/samsung/samsunggalaxyzflipxam4.webp" alt="Product image">
+                                                    <img src="{{ $value->varient->product->image }}" alt="Product image">
                                                 </a>
                                             </figure>
 
                                             <h3 class="product-title">
-                                                <a href="#">Samsung Galaxy Z Flip 4 256GB</a>
+                                                <a href="#">{{ $value->varient->product -> name }}</a>
                                             </h3><!-- End .product-title -->
                                         </div><!-- End .product -->
                                     </td>
-                                    <td class="price-col">64GB</td>
-                                    <td class="price-col">$890.00</td>
+                                    <td class="price-col">{{ $value->varient->storage }}</td>
+                                    <td class="price-col">{{ $value->varient->product-> price }}</td>
                                     <td class="quantity-col">
                                         <div class="cart-product-quantity">
-                                            <input type="number" class="form-control" value="1" min="1" max="50" step="1" data-decimals="0" required>
+                                            @php
+                                                $quantity =  $value -> quantity ; // Số lượng sản phẩm, bạn cần thay đổi giá trị này theo số lượng người dùng chọn
+                                            @endphp
+                                            <input type="number" class="form-control" value="{{ $quantity }}" min="1" max="50" step="1" data-decimals="0" required>
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
-                                    <td class="total-col">$990.00</td>
+                                    <td class="total-col">${{ $value->varient->product-> price * $quantity }}</td>
                                     <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
                                 </tr>
+                                @endforeach
                                
                             </tbody>
                         </table><!-- End .table table-wishlist -->
@@ -86,7 +91,7 @@
                                 <tbody>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
-                                        <td id="summary-subtotal">$2180.00</td>
+                                        <td id="summary-subtotal">{{ $total }}</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
                                         <td>Shipping:</td>
@@ -130,15 +135,15 @@
 
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td id="summary-total">$2180.00</td>
+                                        <td id="summary-total">{{ $total }}</td>
                                     </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->
 
-                            <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block" id="btn-checkout">PROCEED TO CHECKOUT</a>
+                            <a href="{{ route('checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block" id="btn-checkout">PROCEED TO CHECKOUT</a>
                         </div><!-- End .summary -->
 
-                        <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
+                        <a href="{{ route('public.product.index') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
