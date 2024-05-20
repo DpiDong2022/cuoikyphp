@@ -16,4 +16,19 @@ class AppController extends Controller
         // $category = Category::orderBy('id','ASC')->get();
         // return view('public.index', ['products' => Product::all(), 'category' => Category::orderBy('name','ASC')->get()]) ;
     }
+    public function about(){
+        return view('public.default.about');
+    }
+    public function blog(){
+        return view('public.default.about');
+    }
+    public function contact(){
+        return view('public.default.about');
+    }
+    public function faq(){
+        return view('public.default.about');
+    }   
+    public function checkout(){
+        return view('public.default.checkout');
+    }   
 }
