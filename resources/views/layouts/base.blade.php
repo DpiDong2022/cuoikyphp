@@ -76,7 +76,7 @@
                             <i class="icon-bars"></i>
                         </button>
 
-                        <a href="route('public.index')" class="logo">
+                        <a href="{{ route('public.index') }}" class="logo">
                             <img src="{{ asset('assets/images/demos/demo-3/logo.png') }}" alt="Techolic Logo"
                                 width="170" height="24">
                         </a>
@@ -208,6 +208,7 @@
                                     <a href="{{ route('cart.index') }}" class="btn btn-primary">View Cart</a>
                                     <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .dropdown-cart-total -->
+                                
                             </div><!-- End .dropdown-menu -->
                         </div><!-- End .cart-dropdown -->
                     </div><!-- End .header-right -->
@@ -230,7 +231,7 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="index.html" class="sf-with-ul" id="sf-with-ul-home">HOME</a>
+                                    <a href="{{ route('public.index') }}" class="sf-with-ul" id="sf-with-ul-home">HOME</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('public.product.index') }}" class="sf-with-ul">SHOP</a>
@@ -291,13 +292,13 @@
                                         <li>
                                             <a href="contact.html" class="sf-with-ul" id="Contact">Contact</a>
                                         </li>
-                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="{{ route('publicLogin') }}">Login</a></li>
                                         <li><a href="faq.html">FAQs</a></li>
                                         <li><a href="coming-soon.html">Comming Soon</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog.html" class="sf-with-ul" id="sf-with-ul-blog">BLOG</a>
+                                    <a href="{{ route('blog') }}" class="sf-with-ul" id="sf-with-ul-blog">BLOG</a>
                                 </li>
                             </ul><!-- End .menu -->
                         </nav><!-- End .main-nav -->
