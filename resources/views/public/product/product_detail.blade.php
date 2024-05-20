@@ -91,7 +91,7 @@
                                         <label for="size">Storage:</label>
                                         <div class="select-custom">
                                             <select name="storage" id="storage" class="form-control" disabled required>
-                                                <option value="">Select Storage</option>
+                                                <option value="">Select Storagegg</option>
                                             </select>
                                             {{-- <select name="storage" id="storage" class="form-control">
                                                 @foreach ($pro->varients->unique('storage') as $value)
@@ -126,21 +126,26 @@
                                                 <input type="number" id="qty" class="form-control" value="1"
                                                     min="1" max="50" step="1" data-decimals="0" required>
                                             </div><!-- End .product-details-quantity -->
-
-                                            @if (session('user'))
-                                                <a href="#" id="add-to-cart"
-                                                    class="btn-product btn-cart add-to-cart" data-id=""
-                                                    data-title="{{ $pro->name }}" data-image="{{ $pro->image }}"
-                                                    data-price="{{ $pro->price }}"><span>add to cart</span></a>
-                                            @else
+                                            @if ($pro->quantity == 0)
                                                 <a href="{{ route('publicLogin') }}"
-                                                    onclick="alert('Please login first !')"
-                                                    class="btn-product btn-cart add-to-cart"><span>add to cart</span></a>
+                                                    class="btn-product btn-cart add-to-cart" disabled><span>add to
+                                                        cart</span></a>
+                                            @else
+                                                @if (session('user'))
+                                                    <a href="#" id="add-to-cart"
+                                                        class="btn-product btn-cart add-to-cart" data-id=""
+                                                        data-title="{{ $pro->name }}" data-image="{{ $pro->image }}"
+                                                        data-price="{{ $pro->price }}"><span>add to cart</span></a>
+                                                @else
+                                                    <a href="{{ route('publicLogin') }}"
+                                                        onclick="alert('Please login first !')"
+                                                        class="btn-product btn-cart add-to-cart"><span>add to
+                                                            cart</span></a>
+                                                @endif
                                             @endif
                                         </div><!-- End .details-action-col -->
+                                    </div>
                                 </form>
-
-
 
                             </div><!-- End .product-details-action -->
 
@@ -605,4 +610,65 @@
         </div><!-- End .container -->
         </div><!-- End .page-content -->
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let varients = @json($pro->varients);
+
+            $('.color-link').on('click', function(e) {
+                e.preventDefault();
+                let selectedColor = $(this).data('color');
+
+                // Update storage options based on the selected color
+                let storages = varients.filter(varient => varient.color === selectedColor)
+                    .map(varient => varient.storage)
+                    .filter((value, index, self) => self.indexOf(value) ===
+                        index); // Get unique storage values
+
+                $('#storage').empty().append('<option value="">Select Storage</option>');
+                $('#memory').empty().append('<option value="">Select RAM</option>').prop('disabled', true);
+
+                if (storages.length > 0) {
+                    $('#storage').prop('disabled', false);
+                    storages.forEach(function(storage) {
+                        $('#storage').append('<option value="' + storage + '">' + storage +
+                            '</option>');
+                    });
+                } else {
+                    $('#storage').prop('disabled', true);
+                }
+            });
+
+            $('#storage').on('change', function() {
+                let selectedColor = $('.color-link.active').data('color');
+                let selectedStorage = $(this).val();
+
+                // Update memory options based on the selected color and storage
+                let memories = varients.filter(varient => varient.color === selectedColor && varient
+                        .storage === selectedStorage)
+                    .map(varient => varient.memory)
+                    .filter((value, index, self) => self.indexOf(value) ===
+                        index); // Get unique memory values
+
+                $('#memory').empty().append('<option value="">Select RAM</option>');
+
+                if (memories.length > 0) {
+                    $('#memory').prop('disabled', false);
+                    memories.forEach(function(memory) {
+                        $('#memory').append('<option value="' + memory + '">' + memory +
+                            ' GB RAM</option>');
+                    });
+                } else {
+                    $('#memory').prop('disabled', true);
+                }
+            });
+
+            // Mark the selected color as active
+            $('.color-link').on('click', function() {
+                $('.color-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
 @endsection
