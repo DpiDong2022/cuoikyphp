@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\LowStockNotification;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * App\Models\Variant
@@ -32,5 +34,20 @@ class Varient extends Model
     public function invoiceDetails()
     {
         return $this -> hasMany(InvoiceDetail::class, 'varient_id');
+    }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updated(function ($varient) {
+            if ($varient->quantity <= $varient->minimum_qty) {
+                // Notify all admin accounts
+                $accounts = Account::whereHas('role', function ($query) {
+                    $query->where('name', 'admin'); // Assuming role name 'admin' for admin accounts
+                })->get();
+
+                Notification::send($accounts, new LowStockNotification($varient));
+            }
+        });
     }
 }

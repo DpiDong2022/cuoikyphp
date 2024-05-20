@@ -55,9 +55,4 @@ class Invoice extends Model
             event(new OrderCreated($invoice));
         });
     }
-
-    // public function varients()
-    // {
-    //     return $this -> hasManyThrough(Varient::class, InvoiceDetail::class, 'invoice_id', 'varient_id', 'id', 'id');
-    // }
 }
