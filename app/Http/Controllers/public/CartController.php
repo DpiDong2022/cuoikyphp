@@ -15,38 +15,39 @@ class CartController extends Controller
 {
     public function index()
 {
-    
+
     if (!session('user')) {
         return redirect()->route('publicLogin');
     }
 
-    
+
     $latestInvoice = Invoice::where('user_id', session('user')->id)->where('status_id', 5)
                                                                     ->orderBy('id', 'desc')
                                                                     ->first();
 
     if (!$latestInvoice) {
-        
+
         return view('cart.empty');
     }
-    
-    
-    
+
+
+
     $invoiceDetails = InvoiceDetail::where('invoice_id', $latestInvoice->id)->get();
     $total = $invoiceDetails->sum(function ($invoiceDetail) {
         return $invoiceDetail->varient->product->price;
     });
-    
 
-    
+
+
     return view('public.cart.index', ['total' => $total],['invoiceDetails' => $invoiceDetails]);
 }
 
-    public function add(Varient $var){
+    public function add(Request $request){
 
-        dd($var);
+        dd($request);
+    }
 
-    }public function update(Product $product){
+    public function update(Product $product){
 
     }public function delete(Product $product){
 
