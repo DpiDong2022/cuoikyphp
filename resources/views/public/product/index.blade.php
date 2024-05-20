@@ -48,7 +48,7 @@
 
 
                     {{-- Start loop --}}
-                    @foreach($all_products as $value)
+                    @foreach($products as $value)
                     <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                         <div class="product">
                             <figure class="product-media">
@@ -61,7 +61,7 @@
                                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                 </div><!-- End .product-action -->
 
-                                
+
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
@@ -70,7 +70,7 @@
                                 </div><!-- End .product-cat -->
                                 <h3 class="product-title"><a href="product.php">{{ $value -> name }}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    $990.00
+                                    {{formatCurrencyVND($value->price)}}
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">

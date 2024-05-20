@@ -38,7 +38,7 @@ Route::get('/category', [CategoryController::class, 'Index'])->name("category.in
 Route::get('/category/{slug}', [CategoryController::class, 'category'])->name("category");
 
 
-Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
+Route::post('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 Route::get('/product-detail/{id}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/product', [ProductController::class, 'publicIndex'])->name('public.product.index');
 

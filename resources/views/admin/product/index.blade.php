@@ -98,7 +98,7 @@
                                 <td>
                                     <div class="description-content">
                                         <span
-                                            class="short-description">{{Str::limit($product->description, 100) }}</span>
+                                            class="short-description">{{ Str::limit($product->description, 100) }}</span>
                                         <span class="full-description d-none">{{ $product->description }}</span>
                                         @if (Str::length($product->description) > 100)
                                             <a href="javascript:void(0)" class="read-more">Read More</a>
@@ -142,37 +142,47 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
+    // Initialize DataTable
     var table = $('#dataTable').DataTable();
 
-    // Filter table based on category selection
-    $('#categoryFilter').on('change', function() {
-        var selectedCategory = $(this).val();
-        if (selectedCategory) {
-            table.column(4).search('^' + selectedCategory + '$', true, false).draw();
-        } else {
-            table.column(4).search('').draw();
-        }
+    // Attach event listener for search event
+    table.on('search.dt', function() {
+        // Perform your custom actions here when a search is performed
+        mtrigger();
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.read-more').forEach(function(element) {
-            element.addEventListener('click', function() {
-                var parent = this.closest('.description-content');
-                parent.querySelector('.short-description').classList.add('d-none');
-                parent.querySelector('.full-description').classList.remove('d-none');
-                parent.querySelector('.read-more').classList.add('d-none');
-                parent.querySelector('.read-less').classList.remove('d-none');
-            });
-        });
+    // Attach event listener for draw event (when DataTable is redrawn)
+    table.on('draw.dt', function() {
+        // Reattach event listeners after DataTable is redrawn
+        mtrigger();
+    });
 
-        document.querySelectorAll('.read-less').forEach(function(element) {
-            element.addEventListener('click', function() {
-                var parent = this.closest('.description-content');
-                parent.querySelector('.short-description').classList.remove('d-none');
-                parent.querySelector('.full-description').classList.add('d-none');
-                parent.querySelector('.read-more').classList.remove('d-none');
-                parent.querySelector('.read-less').classList.add('d-none');
+    // Function to toggle between short and full description
+    function mtrigger() {
+        $('.description-content').each(function() {
+            var shortDescription = $(this).find('.short-description');
+            var fullDescription = $(this).find('.full-description');
+            var readMore = $(this).find('.read-more');
+            var readLess = $(this).find('.read-less');
+
+            readMore.off('click').on('click', function() {
+                shortDescription.addClass('d-none');
+                fullDescription.removeClass('d-none');
+                readMore.addClass('d-none');
+                readLess.removeClass('d-none');
+            });
+
+            readLess.off('click').on('click', function() {
+                shortDescription.removeClass('d-none');
+                fullDescription.addClass('d-none');
+                readMore.removeClass('d-none');
+                readLess.addClass('d-none');
             });
         });
+    }
+
+    // Call mtrigger() once when the document is loaded
+    $(document).ready(function() {
+        mtrigger();
     });
 </script>
