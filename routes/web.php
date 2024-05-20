@@ -77,6 +77,7 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
         Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
         Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        Route::delete('/admin/accounts/{id}', [credInfoController::class, 'destroy'])->name('account.destroy');
 
         Route::get('/order', [orderController::class, 'showInvoice'])->name('order.info');
         Route::get('/order/{order}', [orderDetailsController::class, 'show'])->name('order.detail');
