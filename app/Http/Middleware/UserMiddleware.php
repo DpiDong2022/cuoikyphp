@@ -25,7 +25,7 @@ class UserMiddleware
         // Check if 'user_id' is present in the session
         if (!$request->session()->has('user')) {
             // If 'user_id' is not present, redirect to the login page
-            return redirect('publicLogin');
+            return redirect('login');
         }
 
         // If 'user_id' is present, allow the request to proceed
