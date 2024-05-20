@@ -371,7 +371,7 @@
                                 <ul class="widget-list">
                                     <li><a href="{{ route('publicLogin') }}">Sign In</a></li>
                                     <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>
-	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>	            						            					
+	            					<li><a href="{{ route('cart.index') }}">View Cart</a></li>
 	            					<li><a href="#">Help</a></li>
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
@@ -441,11 +441,11 @@
                                                                     {{-- <li><a href="#">{{ $value-> name }}</a></li> --}}
                                                                 @endforeach
                                     {{-- <li><a href="productIphone15.html">iPhone 15 Pro Max</a></li> --}}
-                                    
+
                                 </ul>
                             </li>
 
-                            
+
 
                             <li>
                                 <a href="#">PAGES</a>
@@ -456,13 +456,13 @@
                                     <li>
                                         <a href="contact.html">Contact</a>
                                     </li>
-                                    
+
 
                                     <li><a href="{{ route('publicLogin') }}">Sign In</a></li>
-                                    <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>                                   
+                                    <li><a href="{{ route('publicRegister') }}">Sign Up</a></li>
                                     <li><a href="faq.html">FAQs</a></li>
                                     <li><a href="{{ route('cart.index') }}">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>                                   
+                                    <li><a href="checkout.html">Checkout</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -524,16 +524,7 @@ $(document).ready(function() {
         console.log('Selected size variant ID: ' + selectedVariantId);
     });
 
-    $('#add-to-cart').on('click', function(e) {
-        e.preventDefault();
 
-        // Cập nhật ID của variant đã chọn
-        $(this).data('id', selectedVariantId);
-
-        // Thêm sản phẩm vào giỏ hàng
-        var url = "{{ route('cart.add', '') }}/" + selectedVariantId;
-        window.location.href = url;
-    });
 });
 </script>
     <!-- Main JS File -->

@@ -4,7 +4,7 @@
 ## Order Information
 - **OrderID:** {{ $invoice->id }}
 - **Name:** {{ $invoice->user->name }}
-- **Phone:** {{ $invoice->orderInformation->phone }}
+{{-- - **Phone:** {{ $invoice->orderInformation->phone }} --}}
 - **Address:** {{ $invoice->orderInformation->address }}
 - **Order Date:** {{ $invoice->date }}
 - **Total:** {{ $invoice->total }}

@@ -27,6 +27,26 @@
                 <div class="product-details-top mb-2">
                     <div class="row">
                         <div class="col-md-6">
+                            @if (session('error'))
+                                <div class="alert alert-danger">{{ session('error') }}</div>
+                            @endif
+                            @if (session('errors'))
+                                @foreach (session('errors') as $item)
+                                    <div class="alert alert-danger">{{ $item }}</div>
+                                @endforeach
+                            @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (session('success'))
+                                <div class="alert alert-success">{{session('success')}}</div>
+                            @endif
                             <div class="product-gallery product-gallery-vertical">
                                 <div class="row">
                                     <figure class="product-main-image">
@@ -73,8 +93,9 @@
                                     </p>
                                 </div><!-- End .product-content -->
 
-                                <form action="{{route('cart.add')}}" method="POST">
+                                <form action="{{ route('cart.add') }}" method = "POST">
                                     @csrf
+                                    <input hidden type="text" name="product_id" value="{{ $pro->id }}">
                                     <div class="details-filter-row details-row-size">
                                         <label>Color:</label>
 
@@ -124,24 +145,19 @@
                                         <div class="details-action-col">
                                             <div class="product-details-quantity">
                                                 <input type="number" id="qty" class="form-control" value="1"
-                                                    min="1" max="50" step="1" data-decimals="0" required>
+                                                    min="1" max="50" step="1" data-decimals="0"
+                                                    required>
                                             </div><!-- End .product-details-quantity -->
-                                            @if ($pro->quantity == 0)
-                                                <button type="submit"
-                                                    class="btn-product btn-cart add-to-cart" disabled><span>add to
-                                                        cart</span></button>
+
+                                            @if (session('user'))
+                                                <input type="submit" class="btn-product btn-cart add-to-cartt"
+                                                    value="Add to cart">
                                             @else
-                                                @if (session('user'))
-                                                    <button type="submit" id="add-to-cart"
-                                                        class="btn-product btn-cart add-to-cart" data-id=""
-                                                        data-title="{{ $pro->name }}" data-image="{{ $pro->image }}"
-                                                        data-price="{{ $pro->price }}"><span>add to cart</span></button>
-                                                @else
-                                                    <button  type="submit href="{{ route('publicLogin') }}"
-                                                        class="btn-product btn-cart add-to-cart"><span>add to
-                                                            cart</span></button>
-                                                @endif
+                                                <input type="submit" class="btn-product btn-cart add-to-cartt"
+                                                    value="Add to cart">
                                             @endif
+
+
                                         </div><!-- End .details-action-col -->
                                     </div>
                                 </form>
@@ -624,7 +640,7 @@
                 let storages = varients.filter(varient => varient.color === selectedColor)
                     .map(varient => varient.storage)
                     .filter((value, index, self) => self.indexOf(value) ===
-                    index); // Get unique storage values
+                        index); // Get unique storage values
 
                 $('#storage').empty().append('<option value="">Select Storage</option>');
                 $('#memory').empty().append('<option value="">Select Memory</option>').prop('disabled',
@@ -656,7 +672,7 @@
                         .storage === selectedStorage)
                     .map(varient => varient.memory)
                     .filter((value, index, self) => self.indexOf(value) ===
-                    index); // Get unique memory values
+                        index); // Get unique memory values
 
                 $('#memory').empty().append('<option value="">Select Memory</option>');
 
