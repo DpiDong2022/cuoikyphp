@@ -222,23 +222,7 @@
                                 Browse Categories <i class="icon-angle-down"></i>
                             </a> --}}
 
-                            <div class="dropdown-menu">
-                                <nav class="side-nav">
-                                    <ul class="menu-vertical sf-arrows">
-                                        <li class="item-lead"><a href="#">Daily offers</a></li>
-                                        <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                        <li><a href="#">Smartphones</a></li>
-                                        <li><a href="#">Laptops</a></li>
-                                        <li><a href="#">Consoles</a></li>
-                                        <li><a href="#">Storage</a></li>
-                                        <li><a href="#">Earphones and Headphones</a></li>
-                                        <li><a href="#">Phone Cases</a></li>
-                                        <li><a href="#">Controllers</a></li>
-                                        <li><a href="#">Mouses</a></li>
-                                        <li><a href="#">Keyboards</a></li>
-                                    </ul><!-- End .menu-vertical -->
-                                </nav><!-- End .side-nav -->
-                            </div><!-- End .dropdown-menu -->
+                           <!-- End .dropdown-menu -->
                         </div><!-- End .category-dropdown -->
                     </div><!-- End .header-left -->
 
@@ -496,19 +480,7 @@
                     </nav><!-- End .mobile-nav -->
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
-                    <nav class="mobile-cats-nav">
-                        <ul class="mobile-cats-menu">
-                            <li><a class="mobile-cats-lead" href="#">Daily offers</a></li>
-                            <li><a class="mobile-cats-lead" href="#">Gift Ideas</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Smartwatches</a></li>
-                            <li><a href="#">Accessories & Gaminh</a></li>
-                            <li><a href="#">Storage</a></li>
-                            <li><a href="#">Electronic Devices</a></li>
-                            <li><a href="#">Laptop</a></li>
-                            <li><a href="#">Monitor & Mouse</a></li>
-                        </ul><!-- End .mobile-cats-menu -->
-                    </nav><!-- End .mobile-cats-nav -->
+                    
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
 
@@ -539,6 +511,39 @@
     <script src="{{ asset('assets/js/jquery.plugin.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    var selectedVariantId;
+
+    $('.color-link').on('click', function(e) {
+        e.preventDefault();
+        $('.color-link').removeClass('active');
+        $(this).addClass('active');
+
+        // Lấy ID của variant
+        selectedVariantId = $(this).data('id');
+        console.log('Selected color variant ID: ' + selectedVariantId);
+    });
+
+    $('#size').on('change', function() {
+        // Lấy ID của variant
+        selectedVariantId = $(this).val();
+        console.log('Selected size variant ID: ' + selectedVariantId);
+    });
+
+    $('#add-to-cart').on('click', function(e) {
+        e.preventDefault();
+
+        // Cập nhật ID của variant đã chọn
+        $(this).data('id', selectedVariantId);
+
+        // Thêm sản phẩm vào giỏ hàng
+        var url = "{{ route('cart.add', '') }}/" + selectedVariantId;
+        window.location.href = url;
+    });
+});
+</script>
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/demos/demo-3.js') }}"></script>

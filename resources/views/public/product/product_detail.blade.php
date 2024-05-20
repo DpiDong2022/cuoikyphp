@@ -73,30 +73,19 @@
 
                                 <div class="product-nav product-nav-dots">
                                     @foreach($pro->varients as $index => $varient)
-                                        @if($index == 0)
-                                            <a href="#" class="active" style="background: {{ $varient->color }};"><span class="sr-only"></span></a>
-                                        @else
-                                            <a href="#" style="background: {{ $varient->color }};"><span class="sr-only"></span></a>
-                                        @endif
+                                        <a href="#" class="color-link" style="background: {{ $varient->color }};" data-id="{{ $varient->id }}"><span class="sr-only"></span></a>
                                     @endforeach
                                 </div>
-                                <!-- End .product-nav -->
-                            </div><!-- End .details-filter-row -->
-
+                            </div>
                             <div class="details-filter-row details-row-size">
                                 <label for="size">Storage:</label>
                                 <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        {{-- <option value="#" selected="selected">{{ $first_varient -> storage }}</option>
-                                        <option value="s">{{ $va-> storage }}</option> --}}
-                                        @foreach($pro->varients as $index => $varient)
-                                        @if($index == 0)
-                                            <option value="#" selected="selected">{{ $varient -> storage }}</option>
-                                        @else
-                                            <option value="s">{{ $varient-> storage }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                        
+                                <select name="size" id="size" class="form-control">
+                                    @foreach($pro->varients as $index => $varient)
+                                        <option value="{{ $varient->id }}">{{ $varient-> storage }}</option>
+                                    @endforeach
+                                </select>
                                 </div><!-- End .select-custom -->
 
                                 <!-- <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a> -->
@@ -107,13 +96,18 @@
                                     <div class="product-details-quantity">
                                         <input type="number" id="qty" class="form-control" value="1" min="1" max="50" step="1" data-decimals="0" required>
                                     </div><!-- End .product-details-quantity -->
-
-                                    <a href="#" class="btn-product btn-cart add-to-cart"
-                                    data-id="5"
-                                    data-title="iPhone 15 Pro Max"
-                                    data-image="assets/images/iPhone/iphone15blue.webp"
-                                    data-price="990.00"
-                                    ><span>add to cart</span></a>
+                                
+                                    @if(session('user'))
+                                        <a href="#" id="add-to-cart" class="btn-product btn-cart add-to-cart"
+                                           data-id=""
+                                           data-title="{{ $pro -> name }}"
+                                           data-image="{{ $pro -> image }}"
+                                           data-price="{{ $pro-> price }}"
+                                        ><span>add to cart</span></a>
+                                    @else
+                                        <a href="{{ route('publicLogin') }}" onclick="alert('Please login first !')" class="btn-product btn-cart add-to-cart"
+                                        ><span>add to cart</span></a>
+                                    @endif
                                 </div><!-- End .details-action-col -->
 
                                 
