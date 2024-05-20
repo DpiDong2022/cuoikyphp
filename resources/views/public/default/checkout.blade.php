@@ -25,7 +25,8 @@
                         <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
                     </form>
                 </div><!-- End .checkout-discount -->
-                <form action="#">
+                <form action="{{ route('email.sendInvoice') }}" method = "POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-9">
                             <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
@@ -76,17 +77,9 @@
                                 </div><!-- End .row -->
 
                                 <label>Email address *</label>
-                                <input type="email" class="form-control" required>
+                                <input type="email" class="form-control" name = 'email' required>
 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                                    <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
-                                </div><!-- End .custom-checkbox -->
-
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                                    <label class="custom-control-label" for="checkout-diff-address">Ship to a different address?</label>
-                                </div><!-- End .custom-checkbox -->
+                                
 
                                 <label>Order notes (optional)</label>
                                 <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
@@ -104,18 +97,15 @@
                                     </thead>
 
                                     <tbody id="body-summary">
+                                        @foreach($invoiceDetails as $value)
                                         <tr>
-                                            <td><a href="#">Beige knitted elastic runner shoes</a></td>
-                                            <td>$84.00</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a href="#">Blue utility pinafore denimdress</a></td>
-                                            <td>$76,00</td>
-                                        </tr>
+                                            <td><a href="#">{{ $value->varient->product->name }} x {{ $value->quantity }}</a></td>
+                                            <td>{{ $value->varient->product->price * $value->quantity  }}</td> 
+                                        </tr>  
+                                        @endforeach                                     
                                         <tr class="summary-subtotal">
                                             <td>Subtotal:</td>
-                                            <td>$160.00</td>
+                                            <td>{{ $total }}</td>
                                         </tr><!-- End .summary-subtotal -->
                                         <tr>
                                             <td>Shipping:</td>
@@ -123,7 +113,7 @@
                                         </tr>
                                         <tr class="summary-total">
                                             <td>Total:</td>
-                                            <td>$160.00</td>
+                                            <td>{{ $total }}</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->

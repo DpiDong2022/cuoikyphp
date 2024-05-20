@@ -64,6 +64,8 @@ Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name(
 Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
 Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
 
+Route::post('/sendInvoiceToEmail', [AppController::class, 'sendInvoiceToEmail'])->name('email.sendInvoice');
+
 
 Route::get('/reset/enterEmail', [ResetPasswordController::class, 'emailForm'])->name('email.enterEmail');
 Route::get('/reset/enterToken', [ResetPasswordController::class, 'tokenForm'])->name('email.enterToken');
