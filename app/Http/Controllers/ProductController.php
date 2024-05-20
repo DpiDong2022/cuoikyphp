@@ -19,19 +19,23 @@ class ProductController extends Controller
     {
         return view('admin.product.index', ['products' => $this->list()]);
     }
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        // $all_products = DB::table('products')
-        // ->join('category','id','=','products.category_id')
-        // ->orderby('products.id','desc')->get();
-        $product = Product::all();
+        $query = $request->input('q');
 
-        
-        $all_products = DB::table('products')->orderby('products.id','desc')->limit(20)->get();
-        
-         return view('public.product.index',compact('product','all_products'));
+        // Get all products if no search query is provided
+        if (!$query) {
+            $products = DB::table('products')->orderby('products.id', 'desc')->limit(20)->get();
+        } else {
+            // Perform full-text search using Product model
+            $products = Product::where('name', 'like', "%$query%")
+                ->orWhere('description', 'like', "%$query%")
+                ->orderby('products.id', 'desc')
+                ->limit(20)
+                ->get();
+        }
 
-       
+        return view('public.product.index', compact('products', 'query'));
     }
 
 
@@ -74,7 +78,7 @@ class ProductController extends Controller
             $product->name = $request->name;
             $product->price = $request->price;
             $product->description = $request->description;
-            $product->discount = ($request->discount == null ? 0: $request->discount);
+            $product->discount = ($request->discount == null ? 0 : $request->discount);
             $product->category_id = $request->category_id;
 
             // Upload and store product image as Base64
@@ -149,7 +153,7 @@ class ProductController extends Controller
 
         // If a new image is uploaded, convert it to Base64 and save it
         if ($request->hasFile('image')) {
-            $productImageBase64 = "data:image/jpeg;base64,".base64_encode(file_get_contents($request->file('image')));
+            $productImageBase64 = "data:image/jpeg;base64," . base64_encode(file_get_contents($request->file('image')));
             $product->image = $productImageBase64;
         }
 
@@ -170,11 +174,11 @@ class ProductController extends Controller
     {
         return Product::all();
     }
-    public function product_detail($id){
+    public function product_detail($id)
+    {
         $pro = Product::find($id);
-        
-        $varient = Varient::where('id', $pro->id)->get();
-        return view('public.product.product_detail',compact('pro','varient'));
+
+        $varients = Varient::where('product_id', $pro->id)->get();
+        return view('public.product.product_detail', compact('pro', 'varients'));
     }
 }
-

@@ -43,7 +43,7 @@ class CartController extends Controller
 }
 
     public function add(Varient $var){
-        
+
         dd($var);
 
     }public function update(Product $product){
