@@ -16,6 +16,7 @@ class CartController extends Controller
         return view('public.cart.index');
     }
     public function add(Varient $var){
+        
         dd($var);
 
     }public function update(Product $product){
@@ -24,6 +25,6 @@ class CartController extends Controller
 
     }
     public function clear(){
-
+//aaa
     }
 }
