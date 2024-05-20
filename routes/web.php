@@ -21,6 +21,7 @@ use App\Http\Middleware\EnsureUserLoginAdmin;
 use App\Http\Controllers\admin\orderController;
 use App\Http\Controllers\admin\orderDetailsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\public\ResetPasswordController;
 
 // BEGIN::PUBLIC
 Route::get('/', [AppController::class, 'index'])->name('public.index');
@@ -56,6 +57,14 @@ Route::post('/verifyEmail', [PublicHomeController::class, 'verifyEmail'])->name(
 Route::post('/storeUser', [PublicHomeController::class, 'storeUser'])->name('email.storeUser');
 Route::get('/enterPassregis', [PublicHomeController::class, 'enterPasswordForm'])->name('email.enterPasswordRe');
 
+
+Route::get('/reset/enterEmail', [ResetPasswordController::class, 'emailForm'])->name('email.enterEmail');
+Route::get('/reset/enterToken', [ResetPasswordController::class, 'tokenForm'])->name('email.enterToken');
+Route::get('/reset/enterPassword', [ResetPasswordController::class, 'passwordForm'])->name('email.enterPassword');
+Route::post('/reset/senToken', [ResetPasswordController::class, 'sendToken'])->name('reset.sendToken');
+Route::post('/reset/verifyEmail', [ResetPasswordController::class, 'verifyEmail'])->name('reset.verifyEmail');
+Route::post('/reset/savePassword', [ResetPasswordController::class, 'savePassword'])->name('reset.savePassword');
+
 // Route::get('/product/taosp', [ProductController::class, 'create'])->name("product.create");
 
 // END::PUBLIC
@@ -80,6 +89,7 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
         Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
         Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        Route::delete('/admin/accounts/{id}', [credInfoController::class, 'destroy'])->name('account.destroy');
 
         Route::get('/order', [orderController::class, 'showInvoice'])->name('order.info');
         Route::get('/order/{order}', [orderDetailsController::class, 'show'])->name('order.detail');

@@ -26,14 +26,14 @@
                 <div class="tab-content">
 
                     <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-                        <form action="{{ route('email.verify') }}" method="POST">
+                        <form action="{{route('reset.verifyEmail')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="register-email-2">Mã xác nhận đã được gửi đến email của bạn *</label>
-                                <input type="number" class="form-control" id="register-email-2" name="token">
+                                <input type="number" class="form-control" id="register-email-2" name="token" required>
                             </div><!-- End .form-group -->
-
-                            {{-- <div class="Tpp3KH">
+{{--
+                            <div class="Tpp3KH">
                                 <div class="BKTQBD">Bạn vẫn chưa nhận được mã xác thực?</div>
                                 <button id="sendTokenButton" onclick="startCountdown()" class="btn btn-outline-primary-2">
                                     <span>Gửi lại</span>
@@ -65,25 +65,6 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $('#sendTokenButton').click(function() {
-                var email = "'" + {{ session('email') }} + "'";
-
-                $.ajax({
-                    url: "'" + {{ route('email.sendToken') }} + "'",
-                    method: 'POST',
-                    data: {
-                        email: email,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {},
-                    error: function(xhr) {}
-                });
-            });
-        });
-
         document.getElementById('sendTokenButton').addEventListener('click', function(event) {
             event.preventDefault();
             startCountdown();
@@ -114,5 +95,26 @@
                 }
             }, 1000);
         }
+
+        $(document).ready(function() {
+            $('#sendTokenButton').click(function() {
+                var email = "'" +{{session('email')}} +"'";
+
+                $.ajax({
+                    url: "'" + {{ route('reset.sendToken') }} +"'",
+                    method: 'POST',
+                    data: {
+                        email: email,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                    },
+                    error: function(xhr) {
+                    }
+                });
+            });
+        });
     </script>
 @endsection

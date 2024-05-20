@@ -77,7 +77,7 @@
                                         <label class="custom-control-label" for="signin-remember-2">Remember Me</label>
                                     </div><!-- End .custom-checkbox --> --}}
 
-                                        <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                        <a href="{{route('email.enterEmail')}}" class="forgot-link">Forgot Your Password?</a>
                                         <a href="{{ route('publicRegister') }}" class="forgot-link">Don't have account !
                                             REGISTER</a>
                                     </div><!-- End .form-footer -->
