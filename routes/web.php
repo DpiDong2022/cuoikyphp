@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\addUserController;
 
 use App\Http\Controllers\admin\credInfoController;
 use App\Http\Middleware\EnsureUserLoginAdmin;
+use App\Http\Middleware\CheckUserRoleForAccounts;
 
 use App\Http\Controllers\admin\orderController;
 use App\Http\Controllers\admin\orderDetailsController;
@@ -88,8 +89,20 @@ Route::middleware([EnsureUserLoginAdmin::class])->group(function () {
         //     $path = public_path('them_sanpham_template.xlsx');
         //     return response()->download($path);
         // })->name('product.export-template');
+
+        // Route::middleware([CheckUserRoleForAccounts::class])->group(function () {
+        //     // Routes accessible only to users with role ID 2
+        //     Route::get('/info-account', [credInfoController::class, 'showCred'])->name('account.info');
+        //     Route::get('/add-account', [addUserController::class, 'showRegiserForm'])->name('account.add');
+        //     Route::post('/add-account', [addUserController::class, 'addAccount'])->name('account.addEx');
+        //     Route::delete('/admin/accounts/{id}', [credInfoController::class, 'destroy'])->name('account.destroy');
+        //     // Add more routes as needed
+        // });
     });
 });
+
+
+
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login');
 Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
