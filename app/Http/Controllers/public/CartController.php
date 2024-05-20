@@ -32,10 +32,6 @@ class CartController extends Controller
 
 
 
-    $invoiceDetails = InvoiceDetail::where('invoice_id', $latestInvoice->id)->get();
-    $total = $invoiceDetails->sum(function ($invoiceDetail) {
-        return $invoiceDetail->varient->product->price * $invoiceDetail->quantity;
-    });
         $invoiceDetails = InvoiceDetail::where('invoice_id', $latestInvoice->id)->get();
         $total = $invoiceDetails->sum(function ($invoiceDetail) {
             return $invoiceDetail->varient->product->price;
